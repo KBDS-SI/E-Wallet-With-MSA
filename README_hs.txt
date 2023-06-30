@@ -1,3 +1,1 @@
-Hi. My name is taejin.
-
-merge Testaa
+테스트 ㄱㄱㄱ
