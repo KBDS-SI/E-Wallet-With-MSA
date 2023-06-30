@@ -1,0 +1,13 @@
+server:
+  port: 8761
+#http://192.168.61.190:8761/
+spring:
+  application:
+    name: eurekaservice
+
+eureka:
+  client:
+    register-with-eureka : false
+    fetch-registry: false
+
+
