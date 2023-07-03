@@ -41,12 +41,29 @@
 ### Programming Languages
 
 <img alt="Java" src="https://img.shields.io/badge/java-%23ED8B00.svg?&style=for-the-badge&logo=java&logoColor=white"/>
+<img alt="JavaScript" src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+
 
 ### Framework
 
-<img alt="SpringBoot" src="https://img.shields.io/badge/springboot%20-%236DB33F.svg?&style=for-the-badge&logo=springboot&logoColor=white"/>
+<img alt="SpringBoot" src="https://img.shields.io/badge/spring_boot%20-%236DB33F.svg?&style=for-the-badge&logo=springboot&logoColor=white"/>
 <img alt="Maven" src="https://img.shields.io/badge/maven%20-%2335495e.svg?&style=for-the-badge&logo=maven&logoColor=%234FC08D"/>
+<img alt="SpringSecurity" src="https://img.shields.io/badge/spring_security%20-%236DB33F.svg?&style=for-the-badge&logo=springsecurity&logoColor=white"/>
 <img alt="JPA" src="https://img.shields.io/badge/jpa%20-%23009639.svg?&style=for-the-badge&logo=jpa&logoColor=white"/>
 <img alt="Vue" src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white">
 
 ### Databases
+
+<img src="https://img.shields.io/badge/H2_database-232F3E?style=for-the-badge&logoColor=white">
+<img src="https://img.shields.io/badge/mariaDB-003545?style=for-the-badge&logo=mariaDB&logoColor=white">
+
+### ETC
+
+<img src="https://img.shields.io/badge/postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/jira-0052CC?style=for-the-badge&logo=jirasoftware&logoColor=white">
+<img src="https://img.shields.io/badge/intellij-000000?style=for-the-badge&logo=intellijidea&logoColor=white">
+<img src="https://img.shields.io/badge/vscode-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white">
+
+
+
