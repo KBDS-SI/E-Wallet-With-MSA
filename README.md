@@ -124,4 +124,4 @@
 
 - IntelliJ의 내장기능으로 push를 하면 `Log in to GitHub` 라는 창이 나올때가 있습니다.
 - 이때 `Log in Via GitHub...`를 클릭해 web로그인을 해도 계속 push failed가 뜨면  
-`Log in whit Token...`을 클릭해 토큰을 발급 받아 로그인 합시다. 토큰값은 단 한번만 알려주므로 메모장에 꼭 저장해 놓읍시다.
+`Log in whit Token...`을 클릭해 토큰을 발급 받아 로그인 할 수 있습니다. 토큰값은 단 한번만 알려주므로 메모장에 꼭 저장해 놓아야 합니다.
