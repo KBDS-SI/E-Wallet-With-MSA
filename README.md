@@ -70,6 +70,8 @@
 
 ## Help
 
+<br>
+
 ### 프로젝트 가져오기
 
 1. git 설치 https://git-scm.com/downloads
@@ -80,6 +82,16 @@
 6. Moduel 설정.
 `Ctrl + Alt + Shift + S > Moduels > + 버튼 > Import Module > [프로젝트 Root 폴더 선택] > Ok > Import module from external model > Maven > Create`
 7. 모듈설정이 완료되면 Maven프로젝트로 변경됩니다. 프로젝트의 main 소스를 Run 하여 Spring이 잘 동작하는지 확인합니다.
+
+<br>
+
+### 프로젝트 실행
+
+1. Eureka Server 실행
+2. Api GateWay 실행
+3. Micro Service 실행
+
+<br>
 
 ### How to Use Git?
 
@@ -95,9 +107,21 @@
 6. 병합이 완료되면, 변경사항을 커밋하여 main 브랜치에 반영합니다. `git commit -m "브랜치 병합 완료!!"`
 7. 다른 개발자들이 변경사항을 확인할 수 있도록 원격 저장소(origin)에 push 합니다. `git push origin main`
 
-### Jira
+<br>
+
+### How to Use Jira?
 
 1. https://laugh4mile.atlassian.net/jira/software/projects/EWWM/boards/2 에서 이슈를 생성합니다.
 2. 이슈를 생성하면 고유의 코드가 나옵니다. ex) EWWM-1
 3. 이제 소스코드 수정 후 commit 할 때 커밋 메시지에 이슈코드를 포함합니다. `git commit -m "EWWM-1 작업완료"`
 4. Jira에서 해당 이슈에 대한 커밋 로그를 확인할 수 있습니다.
+
+<br>
+
+### Error Report
+
+#### Terminal에선 push가 되는데 IntelliJ에서는 안돼요
+
+- IntelliJ의 내장기능으로 push를 하면 `Log in to GitHub` 라는 창이 나올때가 있습니다.
+- 이때 `Log in Via GitHub...`를 클릭해 web로그인을 해도 계속 push failed가 뜨면  
+`Log in whit Token...`을 클릭해 토큰을 발급 받아 로그인 합시다. 토큰값은 단 한번만 알려주므로 메모장에 꼭 저장해 놓읍시다.
