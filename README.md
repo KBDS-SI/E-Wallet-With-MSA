@@ -79,6 +79,7 @@
   `Project > SDK` 원하는 JDK를 선택합니다.
 6. Moduel을 설정합니다. `Ctrl + Alt + Shift + S` 를 눌러 Project Structure를 엽니다.
   `Moduels > + 버튼 클릭 > Import Module > [원하는 프로젝트 Root 폴더 선택] > Ok > Import module from external model > Maven > Create`
+7. 모듈설정이 완료되면 Maven프로젝트로 변경됩니다. 프로젝트의 main 소스를 Run 하여 Spring이 잘 동작하는지 확인합니다.
 
 ### How to Use Git?
 
@@ -86,7 +87,13 @@
 2. Branch를 생성해도 바로 이동되지 않습니다. 터미널에 `git checkout [브랜치 이름]`을 입력하여 이동합니다.
 3. 작업이 끝나면 commit을 통해 로컬 저장소에 기록 해야합니다. `git commit -m "커밋 메시지"`를 통해 commit을 완료합니다. 메시지는 상세하게 작성하는 것이 좋으며, 변경된 내용이나 커밋의 의도를 명확하게 전달하는 데 도움이 됩니다.
 4. 커밋이 완료되면 다시 main 브랜치로 이동합니다. `git checkout main`
-5. main 브랜치에서 작업이 끝난 브랜치를 병합합니다. `git merge [브랜치 이름]`
-6. 이때 변경사항이 동시에 일어나서 충돌이 발생할 경우 충돌을 해결해야 합니다.
-7. 병합이 완료되면, 변경사항을 커밋하여 main 브랜치에 반영합니다. `git commit -m "브랜치 병합 완료!!"`
-8. 변경사항이 커밋되었으니, 다른 개발자들이 이를 확인할 수 있도록 변경 사항을 원격 저장소(origin)에 push 합니다. `git push origin main`
+5. main 브랜치에서 작업이 끝난 브랜치를 병합합니다. `git merge [브랜치 이름]` 이때 변경사항이 동시에 일어나서 충돌이 발생할 경우 충돌을 해결해야 합니다. 
+6. 병합이 완료되면, 변경사항을 커밋하여 main 브랜치에 반영합니다. `git commit -m "브랜치 병합 완료!!"`
+7. 변경사항이 커밋되었으니, 다른 개발자들이 이를 확인할 수 있도록 변경 사항을 원격 저장소(origin)에 push 합니다. `git push origin main`
+
+### Jira
+
+1. `https://laugh4mile.atlassian.net/jira/software/projects/EWWM/boards/2` 에서 이슈를 생성합니다.
+2. 이슈를 생성하면 고유의 코드가 나옵니다. ex) EWWM-1
+3. 이제 소스코드 수정 후 commit 할 때 커밋 메시지에 이슈코드를 포함합니다. `git commit -m "EWWM-1 작업완료"`
+4. Jira에서 해당 이슈에 대한 커밋 로그를 확인할 수 있습니다.
