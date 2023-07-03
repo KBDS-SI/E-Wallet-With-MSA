@@ -65,5 +65,28 @@
 <img src="https://img.shields.io/badge/intellij-000000?style=for-the-badge&logo=intellijidea&logoColor=white">
 <img src="https://img.shields.io/badge/vscode-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white">
 
+<br>
 
+## Help
 
+### 프로젝트 가져오기
+
+1. git 설치 https://git-scm.com/downloads
+2. gitHub 회원가입
+3. Repository의 `<>Code`를 클릭하면 해당 레포의 remote 저장소의 주소가 나옵니다. 주소를 복사합니다.
+4. IntelliJ IDE를 실행 후 `File > New > Project from Version Controll...`을 클릭후 URL에 복사한 주소를 입력 후 `Clone` 클릭
+5. SDK를 선택합니다. `Ctrl + Alt + Shift + S` 를 눌러 Project Structure를 엽니다.
+  `Project > SDK` 원하는 JDK를 선택합니다.
+6. Moduel을 설정합니다. `Ctrl + Alt + Shift + S` 를 눌러 Project Structure를 엽니다.
+  `Moduels > + 버튼 클릭 > Import Module > [원하는 프로젝트 Root 폴더 선택] > Ok > Import module from external model > Maven > Create`
+
+### How to Use Git?
+
+1. 작업은 각자의 Branch를 따로 파서 합니다. Root Branch 는 main 입니다. 터미널에 `git branch [브랜치 이름]`으로 Branch를 생성할 수 있습니다.
+2. Branch를 생성해도 바로 이동되지 않습니다. 터미널에 `git checkout [브랜치 이름]`을 입력하여 이동합니다.
+3. 작업이 끝나면 commit을 통해 로컬 저장소에 기록 해야합니다. `git commit -m "커밋 메시지"`를 통해 commit을 완료합니다. 메시지는 상세하게 작성하는 것이 좋으며, 변경된 내용이나 커밋의 의도를 명확하게 전달하는 데 도움이 됩니다.
+4. 커밋이 완료되면 다시 main 브랜치로 이동합니다. `git checkout main`
+5. main 브랜치에서 작업이 끝난 브랜치를 병합합니다. `git merge [브랜치 이름]`
+6. 이때 변경사항이 동시에 일어나서 충돌이 발생할 경우 충돌을 해결해야 합니다.
+7. 병합이 완료되면, 변경사항을 커밋하여 main 브랜치에 반영합니다. `git commit -m "브랜치 병합 완료!!"`
+8. 변경사항이 커밋되었으니, 다른 개발자들이 이를 확인할 수 있도록 변경 사항을 원격 저장소(origin)에 push 합니다. `git push origin main`
