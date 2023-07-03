@@ -93,7 +93,7 @@
 
 ### Jira
 
-1. `https://laugh4mile.atlassian.net/jira/software/projects/EWWM/boards/2` 에서 이슈를 생성합니다.
+1. https://laugh4mile.atlassian.net/jira/software/projects/EWWM/boards/2 에서 이슈를 생성합니다.
 2. 이슈를 생성하면 고유의 코드가 나옵니다. ex) EWWM-1
 3. 이제 소스코드 수정 후 commit 할 때 커밋 메시지에 이슈코드를 포함합니다. `git commit -m "EWWM-1 작업완료"`
 4. Jira에서 해당 이슈에 대한 커밋 로그를 확인할 수 있습니다.
