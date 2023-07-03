@@ -7,6 +7,8 @@
     <file url="file://$PROJECT_DIR$/eurekaserver/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ewallet/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ewallet/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/remit/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/remit/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/userservice/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/userservice/src/main/resources" charset="UTF-8" />
   </component>
