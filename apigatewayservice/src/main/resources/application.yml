@@ -13,6 +13,20 @@ spring:
     name: apigateway-service
   cloud:
     gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: '*'
+            allow-credentials: false
+            allowedHeaders: '*'
+            allowedMethods:
+              - PUT
+              - GET
+              - POST
+              - DELETE
+              - OPTIONS
       routes:
         - id: first-service
           uri: lb://MY-FIRST-SERVICE
@@ -33,7 +47,7 @@ spring:
         - id: ewallet
           uri: lb://EWALLET-SERVICE
           predicates:
-            - Path=/ewallet/**
+            - Path=/ewallet-service/**
           filters:
             #  - AddRequestHeader=second-request, second-request-header2
             #  - AddResponseHeader=second-response, second-response-header2

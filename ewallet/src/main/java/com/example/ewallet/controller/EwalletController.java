@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class EwalletController {
         this.ewalletService = ewalletService;
     }
 
-    @PostMapping("/ewallet")
+    @PostMapping("/ewallet-service")
     public ResponseEntity createEwallet(@RequestBody RequestEwallet ewallet){
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
@@ -38,7 +39,7 @@ public class EwalletController {
 
     }
 
-    @GetMapping("/welcome")
+    @GetMapping("/ewallet-service/welcome")
     public String welcome(){
 
         log.info("welcome to logs");

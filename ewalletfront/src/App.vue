@@ -1,21 +1,18 @@
 
 <template>
-  <div>
-    <button v-on:click="increment">click {{ state.count }}</button>
+  <div id = "app">
+    <ewallet-form></ewallet-form>
   </div>
 </template>
 
 <script>
-import { reactive} from  'vue';
+import EwalletForm from 'C:/Users/KBDS/git/ewalletfront/src/components/ewalletForm.vue';
+
 export default {
-  setup(){
-    const state = reactive({
-      count : 0,
-    })
-    return {
-      state,
-    };
-  },
+  name:'app',
+  components:{
+    EwalletForm
+  }
 
 };
 
