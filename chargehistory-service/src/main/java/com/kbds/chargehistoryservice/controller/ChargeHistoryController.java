@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.Buffer;
+
 @RestController
 @Slf4j
 @RequestMapping("/chargehistory-service")
@@ -34,6 +40,65 @@ public class ChargeHistoryController {
         ChargeHistoryDto chargeHistoryDto = mapper.map(chargeHistoryRequest, ChargeHistoryDto.class);
         chargeHistoryService.createChargeHistory(chargeHistoryDto);
 
-        return "ChargeHistory Create OK!";
+        String returnString = "";
+
+        try {
+            String apiUrl = "http://192.168.61.190:8000/user-service/hello";
+
+            URL url = new URL(apiUrl);
+
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            /* POST 방식 예제
+            String postData = "param1=value1&param2=value2"; 일반String
+            String postData = "{\"param1\":\"value1\",\"param2\":\"value2\"}"; JSON
+
+            conn.setRequestMethod("POST");
+            conn.setDoOutput(true);
+
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setDoOutput(true);
+
+            // POST 요청 바디 데이터 설정
+            byte[] postDataBytes = postData.getBytes(StandardCharsets.UTF_8);
+            conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
+            conn.getOutputStream().write(postDataBytes);
+
+            JSON 타입일때
+            byte[] postDataBytes = postData.getBytes(StandardCharsets.UTF_8);
+            conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
+
+            OutputStream outputStream = conn.getOutputStream();
+            outputStream.write(postDataBytes);
+            outputStream.flush();
+            outputStream.close();
+             */
+
+            int responseCode = conn.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                String inputLine;
+                StringBuilder response = new StringBuilder();
+
+                while((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+
+                in.close();
+
+                returnString = response.toString();
+            } else {
+                returnString = "API 호출이 실패하였습니다. 응답코드 : " + responseCode;
+            }
+
+            conn.disconnect();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+
+//        return "ChargeHistory Create OK!";
+        return returnString;
     }
 }
