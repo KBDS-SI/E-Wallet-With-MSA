@@ -18,4 +18,6 @@ public class PayMentRequest {
     @NotNull(message = "SendAmt cannot be null")
     @Size(min = 2, message = "SendAmt not be less than to numbers")
     private Integer sendAmt;
+
+    private Long useId;
 }

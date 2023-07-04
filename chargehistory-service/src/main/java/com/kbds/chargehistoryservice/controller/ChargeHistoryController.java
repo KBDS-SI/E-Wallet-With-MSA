@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.Buffer;
+import java.nio.charset.StandardCharsets;
 
 @RestController
 @Slf4j
@@ -42,13 +44,31 @@ public class ChargeHistoryController {
 
         String returnString = "";
 
-        try {
-            String apiUrl = "http://192.168.61.190:8000/user-service/hello";
+//        try {
+//            String apiUrl = "http://192.168.61.190:8000/user-service/login";
+//
+//            URL url = new URL(apiUrl);
+//
+//            String postData = "{\"userId\":\"testId\""
+//                              + ",\"username\":\"123123\""
+//                              + ",\"pwd\":\"testPwd\""
+//                              + ",\"phone\":\"01012345678\""
+//                              + "}";
+//
+//            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//            conn.setRequestMethod("POST");
+//            conn.setRequestProperty("Content-Type", "application/json");
+//            conn.setDoOutput(true);
+//
+//            byte[] postDataBytes = postData.getBytes(StandardCharsets.UTF_8);
+//            conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
+//
+//            OutputStream outputStream = conn.getOutputStream();
+//            outputStream.write(postDataBytes);
+//            outputStream.flush();
+//            outputStream.close();
 
-            URL url = new URL(apiUrl);
-
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
+            //conn.setRequestMethod("GET");
             /* POST 방식 예제
             String postData = "param1=value1&param2=value2"; 일반String
             String postData = "{\"param1\":\"value1\",\"param2\":\"value2\"}"; JSON
@@ -75,30 +95,29 @@ public class ChargeHistoryController {
             outputStream.close();
              */
 
-            int responseCode = conn.getResponseCode();
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                String inputLine;
-                StringBuilder response = new StringBuilder();
+//            int responseCode = conn.getResponseCode();
+//            if (responseCode == HttpURLConnection.HTTP_OK) {
+//                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+//                String inputLine;
+//                StringBuilder response = new StringBuilder();
+//
+//                while((inputLine = in.readLine()) != null) {
+//                    response.append(inputLine);
+//                }
+//
+//                in.close();
+//
+//                returnString = response.toString();
+//            } else {
+//                returnString = "API 호출이 실패하였습니다. 응답코드 : " + responseCode;
+//            }
+//
+//            conn.disconnect();
+//        } catch(Exception e) {
+//            e.printStackTrace();
+//        }
 
-                while((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
-                }
-
-                in.close();
-
-                returnString = response.toString();
-            } else {
-                returnString = "API 호출이 실패하였습니다. 응답코드 : " + responseCode;
-            }
-
-            conn.disconnect();
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-
-
-//        return "ChargeHistory Create OK!";
+        returnString =  "ChargeHistory Create OK!";
         return returnString;
     }
 }

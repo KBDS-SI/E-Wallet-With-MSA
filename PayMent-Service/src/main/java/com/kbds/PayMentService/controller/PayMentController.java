@@ -52,4 +52,14 @@ public class PayMentController {
 
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
+
+    @PostMapping("/receivePayMent")
+    public String receivePayMent(@RequestBody PayMentRequest payMentRequest){
+        ModelMapper mapper = new ModelMapper();
+        mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+
+        PayMentDto payMentDto = mapper.map(payMentRequest, PayMentDto.class);
+        String returnString = payMentService.receivePayMent(payMentDto);
+        return returnString;
+    }
 }

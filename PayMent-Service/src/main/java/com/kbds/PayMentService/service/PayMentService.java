@@ -9,4 +9,6 @@ public interface PayMentService {
     PayMentDto createPayMent(PayMentDto paymentDto);
 
     Iterable<PayMentEntity> getReceivePayList(String receiveId);
+
+    String receivePayMent(PayMentDto payMentDto);
 }
