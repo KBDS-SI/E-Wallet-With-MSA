@@ -17,11 +17,10 @@ public class RequestUser {
     private String username;
 
     @NotNull(message = "pwd cannot be null")
-    @Size(min = 8, message = "pwd must be equal or grater than 8 characters")
+    @Size(min = 5, message = "pwd must be equal or grater than 8 characters")
     private String pwd;
 
     @NotNull(message = "phone cannot be null")
-    @Size(min = 11, message = "phone must be equal or grater than 11 characters")
+    @Size(min = 10, message = "phone must be equal or grater than 11 characters")
     private String phone;
-
 }
