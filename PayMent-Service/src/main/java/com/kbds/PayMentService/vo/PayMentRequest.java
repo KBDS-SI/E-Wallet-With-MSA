@@ -2,6 +2,9 @@ package com.kbds.PayMentService.vo;
 
 import lombok.Data;
 
+import javax.validation.constraints.*;
+
+
 @Data
 public class PayMentRequest {
     @NotNull(message = "SendId cannot be null")
