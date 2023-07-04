@@ -54,3 +54,11 @@ spring:
             #  - AddRequestHeader=second-request, second-request-header2
             #  - AddResponseHeader=second-response, second-response-header2
             - CustomFilter
+        - id: payment-service
+          uri: lb://PAYMENT-SERVICE
+          predicates:
+            - Path=/payment-service/**
+          filters:
+            #  - AddRequestHeader=second-request, second-request-header2
+            #  - AddResponseHeader=second-response, second-response-header2
+            - CustomFilter
