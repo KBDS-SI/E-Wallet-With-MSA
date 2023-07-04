@@ -62,3 +62,11 @@ spring:
             #  - AddRequestHeader=second-request, second-request-header2
             #  - AddResponseHeader=second-response, second-response-header2
             - CustomFilter
+        - id: chargehistory-service
+          uri: lb://CHARGEHISTORY-SERVICE
+          predicates:
+            - Path=/chargehistory-service/**
+          filters:
+            #  - AddRequestHeader=second-request, second-request-header2
+            #  - AddResponseHeader=second-response, second-response-header2
+            - CustomFilter
