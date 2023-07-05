@@ -6,9 +6,9 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://192.168.61.252:8761/eureka # 회사 내꺼
+#      defaultZone: http://192.168.61.252:8761/eureka # 회사 내꺼
 #      defaultZone: http://192.168.0.3:8761/eureka # 울집 pc
-#      defaultZone: http://192.168.61.190:8761/eureka # 회사 대리님꺼
+      defaultZone: http://192.168.61.190:8761/eureka # 회사 대리님꺼
 
 spring:
   application:
