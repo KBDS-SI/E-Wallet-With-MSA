@@ -72,7 +72,7 @@
 			<artifactId>jjwt</artifactId>
 			<version>0.9.1</version>
 		</dependency>
-		<!--	JWT 토큰생성 오류 해결	-->
+		<!--	jwt 토큰 생성 중 발생되는 javax/xml/bind/DatatypeConverter 에러 해결	-->
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>

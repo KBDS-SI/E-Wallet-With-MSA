@@ -56,4 +56,9 @@ public class UserController {
     public String zz() {
         return "zz";
     }
+
+    @GetMapping("/health-check")
+    public String healthcheck() {
+        return "인증없이 들어오면 안되는데...";
+    }
 }

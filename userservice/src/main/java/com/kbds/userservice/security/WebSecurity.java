@@ -23,6 +23,7 @@ public class WebSecurity  {
     private final ObjectPostProcessor<Object> objectPostProcessor;
     private static final String[] AUTH_WHITELIST = {
             "/hello",
+            "/health-check",
             "/join",
             "/login"
             };
@@ -32,11 +33,6 @@ public class WebSecurity  {
         http.headers(request -> request.frameOptions(frameOptionsConfig -> request.disable()));
         http.authorizeHttpRequests(request -> request.requestMatchers(AUTH_WHITELIST).permitAll()).addFilter(getAuthenticationFilter());
         http.authorizeHttpRequests(request -> request.requestMatchers(PathRequest.toH2Console()).permitAll()).addFilter(getAuthenticationFilter());
-//        http.formLogin(login -> login
-//                .defaultSuccessUrl("/zz")
-//                .permitAll());
-//        http.authorizeHttpRequests(request -> request.requestMatchers(AUTH_WHITELIST).permitAll()).addFilter(getAuthenticationFilter());
-//        http.authorizeHttpRequests(request -> request.requestMatchers(PathRequest.toH2Console()).permitAll()).addFilter(getAuthenticationFilter());
 
         return http.build();
     }
