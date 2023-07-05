@@ -26,6 +26,10 @@ eureka:
 #      defaultZone: http://192.168.61.190:8761/eureka
 #      defaultZone: http://192.168.0.3:8761/eureka
       defaultZone: http://192.168.61.252:8761/eureka
+
+logging:
+  level:
+    com.kbds.userservice: DEBUG
 gateway:
 #  ip: 192.168.0.3
   ip: 192.168.61.252
