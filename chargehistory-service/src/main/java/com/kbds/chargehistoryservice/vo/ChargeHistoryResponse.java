@@ -1,9 +1,8 @@
 package com.kbds.chargehistoryservice.vo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import jakarta.persistence.Column;
 import lombok.Data;
-import org.hibernate.annotations.CreationTimestamp;
+
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
