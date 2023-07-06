@@ -3,6 +3,7 @@ package com.example.ewallet.controller;
 import com.example.ewallet.dto.EwalletDto;
 import com.example.ewallet.service.EwalletService;
 import com.example.ewallet.vo.RequestEwallet;
+import com.example.ewallet.vo.ResponseEwallet;
 import com.netflix.discovery.converters.Auto;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -30,15 +31,15 @@ public class EwalletController {
     }
 
     @PostMapping("/createEwallet")
-    public ResponseEntity createEwallet(@RequestBody RequestEwallet ewallet){
+    public ResponseEntity<ResponseEwallet> createEwallet(@RequestBody RequestEwallet ewallet){
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
         EwalletDto ewalletDto = mapper.map(ewallet, EwalletDto.class);
         ewalletService.createEwallet(ewalletDto);
+        ResponseEwallet responseEwallet = mapper.map(ewalletDto, ResponseEwallet.class);
 
-        return new ResponseEntity(HttpStatus.CREATED);
-
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseEwallet);
     }
 
 //    @PostMapping(value = {"/{userId}/{ewalletId}"})

@@ -12,16 +12,15 @@ spring:
       path: /h2-console
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:tcp://192.168.61.190/~/data
-    username: kbds
-    password: 1234
-  devtools:
-    livereload:
-      enabled: true
-#    url: jdbc:h2:tcp://192.168.61.190/~/data
     url: jdbc:h2:mem:testdb
     username: sa
     password:
+#    url: jdbc:h2:tcp://192.168.61.190/~/data
+#    username: kbds
+#    password: 1234
+  devtools:
+    livereload:
+      enabled: true
 #  jpa:
 #    generate-ddl: true
 #    defer-datasource-initialization: true

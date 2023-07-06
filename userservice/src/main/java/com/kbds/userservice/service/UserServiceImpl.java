@@ -1,8 +1,11 @@
 package com.kbds.userservice.service;
 
+import com.kbds.userservice.client.EwalletServiceClient;
 import com.kbds.userservice.dto.UserDto;
 import com.kbds.userservice.jpa.UserEntity;
 import com.kbds.userservice.jpa.UserRepository;
+import com.kbds.userservice.vo.RequestEwallet;
+import com.kbds.userservice.vo.ResponseEwallet;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -13,6 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 @Service
@@ -21,10 +25,13 @@ public class UserServiceImpl implements UserService{
     private UserRepository userRepository;
     private BCryptPasswordEncoder passwordEncoder;
 
+    private EwalletServiceClient ewalletServiceClient;
+
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, EwalletServiceClient ewalletServiceClient) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.ewalletServiceClient = ewalletServiceClient;
     }
 
     @Override
@@ -36,6 +43,13 @@ public class UserServiceImpl implements UserService{
         userRepository.save(userEntity);
 
         UserDto returnUserDto = mapper.map(userEntity, UserDto.class);
+        RequestEwallet ewallet = new RequestEwallet();
+        ewallet.setUserId(userDto.getUserId());
+        ewallet.setEwalletId(userDto.getUserId());
+        ewallet.setAmt(BigDecimal.valueOf(0));
+        ResponseEwallet responseEwallet = ewalletServiceClient.createEwallet(ewallet);
+
+        log.info("responseEwallet ::::::::::::::::::  " + responseEwallet.toString());
         return returnUserDto;
     }
 
