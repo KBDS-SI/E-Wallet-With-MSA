@@ -31,16 +31,21 @@ public class RemitServiceImpl implements RemitService{
     }
 
     @Override
+    public Iterable<RemitEntity> getRemitByAll(RemitDto remitDto) {
+        return remitRepository.findByUserIdOrderByTransTimeDesc(remitDto.getUserId());
+    }
+
+    @Override
     public RemitDto createRemit(RemitDto remitDto) {
 
-        remitDto.setEwalletId(UUID.randomUUID().toString());
+//        remitDto.setEwalletId(UUID.randomUUID().toString());
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         RemitEntity remitEntity = mapper.map(remitDto, RemitEntity.class);
         log.info("remitEntity : " + remitEntity.toString());
         remitRepository.save(remitEntity);
 
-        if ("2".equals(remitDto.getRemitCode())) {
+        if ("2".equals(remitDto.getRemitCode()) && !remitDto.getOppoUserId().isEmpty()) {
             PayMentRequest payMentRequest = new PayMentRequest();
             payMentRequest.setSendId(remitDto.getUserId());
             payMentRequest.setEwalletId(remitDto.getEwalletId());

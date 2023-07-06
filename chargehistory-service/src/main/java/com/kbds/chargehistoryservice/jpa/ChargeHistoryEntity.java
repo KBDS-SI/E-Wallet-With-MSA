@@ -1,9 +1,6 @@
 package com.kbds.chargehistoryservice.jpa;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -15,6 +12,9 @@ import java.time.LocalDateTime;
 @Table(name="ChargeHistory")
 public class ChargeHistoryEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long num;
+
     @Column(nullable = false)
     private String userId;
 
@@ -22,7 +22,7 @@ public class ChargeHistoryEntity {
     private String ewalletId;
 
     @CreationTimestamp
-    @Column(nullable = false, unique = true, updatable = false)
+    @Column(nullable = false, unique = true)
     private LocalDateTime transactionTime;
 
     @Column(nullable = false)
