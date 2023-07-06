@@ -6,6 +6,7 @@ spring:
     name: eurekaservice
     #test
     #test22
+    #test33
 
 eureka:
   client:
