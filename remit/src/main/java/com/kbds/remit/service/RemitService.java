@@ -1,6 +1,6 @@
-package com.example.remit.service;
+package com.kbds.remit.service;
 
-import com.example.remit.dto.RemitDto;
+import com.kbds.remit.dto.RemitDto;
 
 public interface RemitService
 {

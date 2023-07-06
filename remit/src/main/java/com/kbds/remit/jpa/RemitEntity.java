@@ -1,13 +1,11 @@
-package com.example.remit.jpa;
+package com.kbds.remit.jpa;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -19,8 +17,10 @@ public class RemitEntity {
     private String userId;
     @Id
     private String ewalletId;
-    @Id
-    private Date transTime;
+
+    @CreationTimestamp
+    @Column(name = "trans_time", unique = true)
+    private LocalDateTime transTime;
     private String remitCode;
     private BigDecimal amt;
     private String memo;

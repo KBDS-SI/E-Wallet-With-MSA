@@ -1,8 +1,10 @@
-package com.example.remit.service;
+package com.kbds.remit.service;
 
-import com.example.remit.dto.RemitDto;
-import com.example.remit.jpa.RemitEntity;
-import com.example.remit.jpa.RemitRepository;
+import com.kbds.remit.dto.RemitDto;
+import com.kbds.remit.jpa.RemitEntity;
+import com.kbds.remit.jpa.RemitRepository;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +12,16 @@ import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+@Data
+@Slf4j
 @Service
-
 public class RemitServiceImpl implements RemitService{
-
-    @Autowired
     RemitRepository remitRepository;
+    @Autowired
+    public RemitServiceImpl(RemitRepository remitRepository) {
+        this.remitRepository = remitRepository;
+    }
+
     @Override
     public RemitDto createRemit(RemitDto remitDto) {
 
@@ -23,8 +29,9 @@ public class RemitServiceImpl implements RemitService{
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         RemitEntity remitEntity = mapper.map(remitDto, RemitEntity.class);
+        log.info("remitEntity : " + remitEntity.toString());
         remitRepository.save(remitEntity);
-        return null;
+        return mapper.map(remitEntity, RemitDto.class);
 
     }
 }

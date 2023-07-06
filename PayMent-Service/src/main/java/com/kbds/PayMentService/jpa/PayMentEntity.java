@@ -21,9 +21,11 @@ public class PayMentEntity implements Serializable {
     private String receiveId;
     @Column(nullable = false)
     private Integer sendAmt;
+    @Column(nullable = false)
+    private String ewalletId;
 
     @CreationTimestamp
-    @Column(name = "send_at")
+    @Column(name = "send_at", unique = true)
 //    @Column(nullable = true, updatable = false, insertable = false)
 //    @ColumnDefault(value = "CURRENT_TIMESTAMP")
 //    @Temporal(TemporalType.TIMESTAMP)

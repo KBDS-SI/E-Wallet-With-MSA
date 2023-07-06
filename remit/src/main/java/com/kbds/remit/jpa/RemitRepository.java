@@ -1,4 +1,4 @@
-package com.example.remit.jpa;
+package com.kbds.remit.jpa;
 
 import org.springframework.data.repository.CrudRepository;
 
