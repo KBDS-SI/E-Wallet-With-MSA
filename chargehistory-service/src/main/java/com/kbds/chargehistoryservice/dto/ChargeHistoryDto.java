@@ -1,9 +1,11 @@
 package com.kbds.chargehistoryservice.dto;
 
+import com.kbds.chargehistoryservice.vo.ChargeHistoryResponse;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class ChargeHistoryDto {
@@ -13,4 +15,6 @@ public class ChargeHistoryDto {
     private BigDecimal amt;
     private String memo;
     private BigDecimal finalAmt;
+
+    private List<ChargeHistoryResponse> listChargeHistoryResponses;
 }

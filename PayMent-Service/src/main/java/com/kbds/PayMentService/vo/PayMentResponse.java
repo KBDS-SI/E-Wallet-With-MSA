@@ -13,5 +13,6 @@ public class PayMentResponse {
     private String sendId;
     private String receiveId;
     private BigDecimal sendAmt;
+    private String ewalletId;
     private LocalDateTime sendAt;
 }

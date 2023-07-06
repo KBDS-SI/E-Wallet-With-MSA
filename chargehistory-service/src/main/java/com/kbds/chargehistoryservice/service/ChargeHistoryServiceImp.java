@@ -25,12 +25,19 @@ public class ChargeHistoryServiceImp implements ChargeHistoryService{
     }
 
     @Override
+    public Iterable<ChargeHistoryEntity> getChargeHistoryTop5(String userId) {
+        return chargeHistoryRepository.findTop5ByUserIdOrderByTransactionTimeDesc(userId);
+    }
+
+    @Override
     public ChargeHistoryDto createChargeHistory(ChargeHistoryDto chargeHistoryDto) {
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         ChargeHistoryEntity chargeHistoryEntity = mapper.map(chargeHistoryDto, ChargeHistoryEntity.class);
         chargeHistoryEntity.setFinalAmt(new BigDecimal("0").add(new BigDecimal(chargeHistoryEntity.getAmt().toString())));
         chargeHistoryRepository.save(chargeHistoryEntity);
+
+        /* 충전 후 입출금 이력에도 INSERT 처리 */
 
         ChargeHistoryDto returnChargeHistoryDto = mapper.map(chargeHistoryEntity, ChargeHistoryDto.class);
         return returnChargeHistoryDto;
