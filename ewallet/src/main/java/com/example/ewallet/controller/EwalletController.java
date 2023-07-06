@@ -55,6 +55,17 @@ public class EwalletController {
 //
 //        return new ResponseEntity(HttpStatus.CREATED);
 //    }
+
+    @GetMapping("/searchWallet/{userId}")
+    public ResponseEntity<ResponseEwallet> searchWallet(@PathVariable String userId){
+        EwalletDto ewalletDto = ewalletService.searchEwallet(userId);
+        ModelMapper mapper = new ModelMapper();
+        mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        ResponseEwallet responseEwallet = mapper.map(ewalletDto, ResponseEwallet.class);
+
+        return ResponseEntity.status(HttpStatus.OK).body(responseEwallet);
+    }
+
     @GetMapping("/welcome")
     public String welcome(){
 

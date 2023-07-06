@@ -4,4 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface EwalletRepository extends CrudRepository<EwalletEntity, EwalletID> {
     EwalletEntity findByEwalletId(EwalletID ewalletID);
+
+    EwalletEntity findByUserId(String userId);
 }
