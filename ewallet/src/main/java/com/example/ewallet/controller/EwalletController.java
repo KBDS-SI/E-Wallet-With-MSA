@@ -14,6 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+
 @RestController
 @RequestMapping(value = "/")
 @Slf4j
@@ -39,10 +41,24 @@ public class EwalletController {
 
     }
 
+//    @PostMapping(value = {"/{userId}/{ewalletId}"})
+//    public String remit(@PathVariable("userId") String userId,
+//                           @PathVariable("ewalletId") String ewalletId,
+//                            BigDecimal amt
+//                           ) {
+//        ModelMapper mapper = new ModelMapper();
+//        mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+//
+//        EwalletDto ewalletDto =        mapper.map(ewallet, EwalletDto.class);
+//        ewalletService.createRemit(ewalletDto);
+//
+//        return new ResponseEntity(HttpStatus.CREATED);
+//    }
+
     @GetMapping("/ewallet-service/welcome")
     public String welcome(){
 
-        log.info("welcome to logs");
+        log.info("welcome to logsffaasaaf");
 
         return "welcome to ewallet";
     }
