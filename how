@@ -1,0 +1,533 @@
+[33mcommit 5501b2c9cf48794e131e48e3afb118800da42f52[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: ntj <ntj362@naver.com>
+Date:   Thu Jul 6 13:16:31 2023 +0900
+
+    test
+
+[33mcommit 093a2298d6035a9608ecf8aee06a740727610ed6[m
+Author: ntj <ntj362@naver.com>
+Date:   Tue Jul 4 17:43:52 2023 +0900
+
+    API CORS access permission
+
+[33mcommit 68acea9a96a493ccd6a52563ee742461418e5529[m
+Merge: dee50c9 a8d54d5
+Author: guijaepa <guijaepa@gmail.com>
+Date:   Tue Jul 4 17:41:39 2023 +0900
+
+    Merge branch 'main' of https://github.com/KBDS-TD/E-Wallet-With-MSA
+
+[33mcommit dee50c9d38600d808990bcb6cf6e31a843fb6c2d[m
+Author: guijaepa <guijaepa@gmail.com>
+Date:   Tue Jul 4 17:41:26 2023 +0900
+
+    송금관련 받기 기능 추가 및 API 호출 테스트 주석 처리
+
+[33mcommit a8d54d562f5ff51c4a03451e0411774f03287c60[m
+Merge: f557904 d491bf9
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Tue Jul 4 16:09:37 2023 +0900
+
+    Merge branch 'main' of https://github.com/KBDS-TD/E-Wallet-With-MSA
+
+[33mcommit f5579041fe48a2883c31aadeaca39fd18be1e5b9[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Tue Jul 4 16:08:33 2023 +0900
+
+    update UserService
+
+[33mcommit d491bf91e33a572a9602941b918b560186ba82b6[m
+Merge: fe3788b 846ab6a
+Author: Hyunsoo <laugh4mile@naver.com>
+Date:   Tue Jul 4 15:04:11 2023 +0900
+
+    Merge pull request #2 from KBDS-TD/hs
+    
+    Hs
+
+[33mcommit f219dda5e3e1bbc4d73c4888f69a5902830972da[m
+Merge: fe3788b 846ab6a
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Tue Jul 4 14:58:56 2023 +0900
+
+    Merge branch 'hs'
+
+[33mcommit 846ab6ae43c937ea068b6c479d9fbf6ccfaf0ecd[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Tue Jul 4 14:58:10 2023 +0900
+
+    user-service Join 기능 추가
+
+[33mcommit e512466bd12d89a7a7196acb43fbbc6e967424a0[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Tue Jul 4 14:56:56 2023 +0900
+
+    user-service Join 기능 추가
+
+[33mcommit f836225f210cca9e7de029e19ea884a8479d52cc[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Tue Jul 4 14:39:36 2023 +0900
+
+    user-service Join 기능 추가
+
+[33mcommit fe3788b964860879b122d44d45440b1aedc9456c[m
+Author: guijaepa <guijaepa@gmail.com>
+Date:   Tue Jul 4 14:20:52 2023 +0900
+
+    API 호출 추가
+
+[33mcommit c52a37758731e03f9bbcc2fd610a48c7a1da8b26[m
+Author: guijaepa <guijaepa@gmail.com>
+Date:   Tue Jul 4 13:37:29 2023 +0900
+
+    application.yml 수정
+
+[33mcommit 273bd40dd8022fa5b7b187e4ca95915da9a7da44[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Tue Jul 4 13:35:28 2023 +0900
+
+    update UserService
+
+[33mcommit 8bbbeae692f8a809d7c61e11a5177267643f9098[m
+Author: guijaepa <guijaepa@gmail.com>
+Date:   Tue Jul 4 13:31:16 2023 +0900
+
+    ChargeHistory 신규 추가 및 apigatewayservice application.yml 수정
+
+[33mcommit 6d9dd2e841dac7c9cbe4b824f53d69bbf0abefd7[m
+Author: guijaepa <guijaepa@gmail.com>
+Date:   Tue Jul 4 13:31:08 2023 +0900
+
+    ChargeHistory 신규 추가 및 apigatewayservice application.yml 수정
+
+[33mcommit fd7c8c359a411a49e5a9e2ab2649c9fbcb40993b[m
+Author: guijaepa <guijaepa@gmail.com>
+Date:   Tue Jul 4 13:03:32 2023 +0900
+
+    apigateway application.yml 수정
+
+[33mcommit 73c7d98fb678f2ec5d317d88c7945837e049506f[m
+Merge: 2c155c3 7001b22
+Author: ntj <ntj362@naver.com>
+Date:   Tue Jul 4 11:23:44 2023 +0900
+
+    Merge branch 'main' of https://github.com/KBDS-TD/E-Wallet-With-MSA
+
+[33mcommit 2c155c39995265745987bd8536605aae86f1d067[m
+Author: ntj <ntj362@naver.com>
+Date:   Tue Jul 4 11:23:14 2023 +0900
+
+    ewallet front'
+
+[33mcommit 7001b22f41e3495b19343acad0d08297c0f446b6[m
+Author: guijaepa <guijaepa@gmail.com>
+Date:   Tue Jul 4 11:17:06 2023 +0900
+
+    controller commin
+
+[33mcommit 14713b1fec11bc021ed9dd2509f2c0aad32fa4d7[m
+Author: guijaepa <guijaepa@gmail.com>
+Date:   Tue Jul 4 11:09:43 2023 +0900
+
+    TEST1111
+
+[33mcommit ab88ab8022eb7ac9f9d603eb7008f7f090bd14c5[m
+Author: guijaepa <guijaepa@gmail.com>
+Date:   Tue Jul 4 11:07:08 2023 +0900
+
+    TEST1111
+
+[33mcommit e928105999a7f63123a2c083f1211fcddd7c2670[m
+Author: guijaepa <guijaepa@gmail.com>
+Date:   Tue Jul 4 10:56:32 2023 +0900
+
+    TEST1111
+
+[33mcommit 14b95e4493c65594bdef0d9137726b55accc832e[m
+Author: guijaepa <guijaepa@gmail.com>
+Date:   Tue Jul 4 10:50:07 2023 +0900
+
+    test2
+
+[33mcommit 71e42d4ace6c5650b8c41ee66acd1d60b612ef96[m
+Author: guijaepa <guijaepa@gmail.com>
+Date:   Tue Jul 4 10:45:36 2023 +0900
+
+    test
+
+[33mcommit 4ffb5845d8eee692bee980201e4e08f509c06370[m
+Merge: 55a2309 0b06d60
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Tue Jul 4 09:15:21 2023 +0900
+
+    Merge branch 'hs'
+
+[33mcommit 0b06d604cded6bee33005f2cb62b2d009f1fd5a4[m[33m ([m[1;31morigin/hs[m[33m)[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Tue Jul 4 09:13:34 2023 +0900
+
+    update UserService
+
+[33mcommit 8b00342a9f2ecf54968aa1348f3e613641948140[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Mon Jul 3 17:57:19 2023 +0900
+
+    .idea 설정
+
+[33mcommit 55a2309c4ad7cf619eef59de1165f689fb484869[m
+Author: Hyunsoo <laugh4mile@naver.com>
+Date:   Mon Jul 3 17:35:42 2023 +0900
+
+    Update README.md
+
+[33mcommit e41126f40c4ab81c1f26d44c830a47f7abc26e75[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Mon Jul 3 17:30:34 2023 +0900
+
+    Exclude .idea/ directory from tracking
+
+[33mcommit b538403e601cb1d70676618450cc93a0b8ef0b54[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Mon Jul 3 17:17:13 2023 +0900
+
+    Ignore .idea directory
+
+[33mcommit 397bcaffeabbdb6e83971bebd68ec5ac344e06b3[m
+Author: Hyunsoo <laugh4mile@naver.com>
+Date:   Mon Jul 3 15:54:35 2023 +0900
+
+    Update README.md
+
+[33mcommit e09d942e65ea4ebe470ccfe71047ba7dfcbef272[m
+Author: Hyunsoo <laugh4mile@naver.com>
+Date:   Mon Jul 3 15:17:42 2023 +0900
+
+    Update README.md
+
+[33mcommit d139858bb83183e09d625a81905591038e8d2128[m
+Author: Hyunsoo <laugh4mile@naver.com>
+Date:   Mon Jul 3 14:54:16 2023 +0900
+
+    Update README.md
+
+[33mcommit e4195f8cb98d3544531b49ddd6794d38bff903c8[m
+Author: Hyunsoo <laugh4mile@naver.com>
+Date:   Mon Jul 3 14:39:49 2023 +0900
+
+    Update README.md
+
+[33mcommit 0fab38e03aaed6db00440e3174d7abac3e00428d[m
+Author: Hyunsoo <laugh4mile@naver.com>
+Date:   Mon Jul 3 14:36:27 2023 +0900
+
+    Update README.md
+
+[33mcommit 59689b99c4767f717dfd54f777394fcf15ec0a08[m
+Author: Hyunsoo <laugh4mile@naver.com>
+Date:   Mon Jul 3 14:27:42 2023 +0900
+
+    Update README.md
+
+[33mcommit a396c3be719f3ad3898257b367a40b3c2aa263a8[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Mon Jul 3 13:50:06 2023 +0900
+
+    .idea 설정
+
+[33mcommit 53145fe2a016d0317733ed26df8e97c18eed87f8[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Mon Jul 3 13:39:20 2023 +0900
+
+    각각의 개발환경이 다르므로 .idea 폴더 내 모든 IntelliJ 설정에 대한 커밋은 무시됩니다.
+    이제 개인별로 설정(jdk 및 module)을 따로 세팅 합니다.
+
+[33mcommit 83ca5721e044d1ff84054efb97d2a29c0be668e7[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Mon Jul 3 13:18:43 2023 +0900
+
+    delete README.txt - 복사본.txt & README_hs.txt
+
+[33mcommit ca56d256c4f71dd95db696098e0765ef2d0133bc[m
+Author: Hyunsoo <laugh4mile@naver.com>
+Date:   Mon Jul 3 13:13:24 2023 +0900
+
+    Update README.md
+
+[33mcommit 05ec4f0c79fedc5dc6c783bd007762af50d0f2f0[m
+Author: Hyunsoo <laugh4mile@naver.com>
+Date:   Mon Jul 3 11:22:13 2023 +0900
+
+    Update README.md
+
+[33mcommit 48f0ca110cea70d780ed3adaf4f148a85b41a52f[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Mon Jul 3 11:13:11 2023 +0900
+
+    add README.md file
+
+[33mcommit 228c54498bea8de82b086762bedd9d0421a1ac39[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Mon Jul 3 10:39:06 2023 +0900
+
+    EWWM-1 git push test 6
+
+[33mcommit e476bb68c8a13807898762e658f9ecc4c40c0567[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Mon Jul 3 10:28:56 2023 +0900
+
+    EWWM-1 git push test 5
+
+[33mcommit 19524001c369e4ffc8557b52e6ace3ec705f8475[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Mon Jul 3 10:28:01 2023 +0900
+
+    EWWM-1 git push test 4
+
+[33mcommit 4925edba0143cb4280cdee953698970b1e23f689[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Mon Jul 3 10:27:12 2023 +0900
+
+    EWWM-1 git push test 3
+
+[33mcommit 5436bbf9da910a943581af0516d001ce0de063af[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Mon Jul 3 10:19:44 2023 +0900
+
+    EWWM-1 git push test 3
+
+[33mcommit 2821c65d5fe520d7afd856317c41903c048e3785[m
+Merge: 406dfb2 75eff36
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Mon Jul 3 10:11:36 2023 +0900
+
+    Merge branch 'main' of https://github.com/KBDS-TD/E-Wallet-With-MSA
+
+[33mcommit 406dfb260c9d7faaca937ebab77608561dda9d7f[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Mon Jul 3 10:11:28 2023 +0900
+
+    EWWM-1 jira test 2
+
+[33mcommit 06f62bed45f9026a64722b5ab8c115266d63d69b[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Mon Jul 3 08:55:54 2023 +0900
+
+    EWWM-1 jira test 2
+
+[33mcommit 75eff365401eb770f13d0336b37d70ce706f1d64[m
+Merge: a70acb3 e4d5744
+Author: guijaepa <guijaepa@gmail.com>
+Date:   Fri Jun 30 17:32:36 2023 +0900
+
+    Merge branch 'main' of https://github.com/KBDS-TD/E-Wallet-With-MSA
+
+[33mcommit a70acb3d58edfec9982f3c5d3597c64a58b9f0bd[m
+Author: guijaepa <guijaepa@gmail.com>
+Date:   Fri Jun 30 17:31:58 2023 +0900
+
+    EWWM-3 수정완료 처리
+
+[33mcommit e4d57449bcdd8bb63725c69c1a273eb292da1106[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Fri Jun 30 17:20:11 2023 +0900
+
+    EWWM-1 jira test
+
+[33mcommit 00f264b78167f6fb24a5b7142acd12cec5bf7049[m
+Author: ntj <ntj362@naver.com>
+Date:   Fri Jun 30 17:14:40 2023 +0900
+
+    api, eureka modify
+
+[33mcommit 9c9ffee49a66b8d4baf699bab68fc887743e629a[m
+Author: guijaepa <guijaepa@gmail.com>
+Date:   Fri Jun 30 17:05:20 2023 +0900
+
+    테스트 입니다.
+
+[33mcommit 05310fd79a66f14f5e32f0d036c437c5bd39c655[m
+Merge: c34f271 9a63d94
+Author: guijaepa <guijaepa@gmail.com>
+Date:   Fri Jun 30 17:04:45 2023 +0900
+
+    Merge branch 'main' of https://github.com/KBDS-TD/E-Wallet-With-MSA
+
+[33mcommit c34f271a40f15c61096e1f9c4353f8828a2f45fd[m
+Author: guijaepa <guijaepa@gmail.com>
+Date:   Fri Jun 30 17:01:05 2023 +0900
+
+    테스트 입니다.
+
+[33mcommit 9a63d940a7a9773901039819db6d41d2b7d0defb[m
+Author: ntj <ntj362@naver.com>
+Date:   Fri Jun 30 16:59:50 2023 +0900
+
+    aaa
+
+[33mcommit 5688f80a081bbd0d60849f553545ee69e9342ed7[m
+Merge: 8063fb6 f07b5ef
+Author: ntj <ntj362@naver.com>
+Date:   Fri Jun 30 16:57:12 2023 +0900
+
+    Merge branch 'main' of https://github.com/KBDS-TD/E-Wallet-With-MSA
+
+[33mcommit 8063fb62fd798db1d27afee920c24ad09c0886d0[m
+Author: ntj <ntj362@naver.com>
+Date:   Fri Jun 30 16:56:06 2023 +0900
+
+    aaa
+
+[33mcommit f07b5ef8d2700ae6ba4a3725ca135f49d4ebb11c[m
+Merge: f57e1bf 2700636
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Fri Jun 30 16:35:54 2023 +0900
+
+    Merge branch 'main' of https://github.com/KBDS-TD/E-Wallet-With-MSA
+
+[33mcommit 270063640f9f82a11a324d7839a4019a2741c473[m
+Merge: 06ba427 fc205f5
+Author: ntj <ntj362@naver.com>
+Date:   Fri Jun 30 16:33:45 2023 +0900
+
+    Merge branch 'main' of https://github.com/laugh4mile/E-Wallet-With-MSA
+
+[33mcommit 06ba427a63d52faa48d1e7fc664ae2968f16568b[m
+Author: ntj <ntj362@naver.com>
+Date:   Fri Jun 30 16:31:32 2023 +0900
+
+    remit
+
+[33mcommit 2e0c2dbafee82fda27c63f502e355ef4dd0f7e8c[m
+Merge: 4b2949a 3aabff5
+Author: ntj <ntj362@naver.com>
+Date:   Fri Jun 30 16:30:49 2023 +0900
+
+    Merge branch 'tj'
+
+[33mcommit 3aabff5bbe8daee8ce1be887735e5e9151cfbcde[m[33m ([m[1;31morigin/tj[m[33m, [m[1;32mtj[m[33m)[m
+Author: ntj <ntj362@naver.com>
+Date:   Fri Jun 30 16:30:11 2023 +0900
+
+    ewallet
+
+[33mcommit f57e1bf16d2f7e32e272120369ea337e62d995a3[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Fri Jun 30 16:27:28 2023 +0900
+
+    add readme_hs.txt
+
+[33mcommit fc205f56e482987cae3397754d97ce005d3d75a5[m
+Merge: 116e156 4b2949a
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Fri Jun 30 15:23:15 2023 +0900
+
+    Merge branch 'main' of https://github.com/laugh4mile/E-Wallet-With-MSA
+
+[33mcommit 4b2949aa1248ebd51a659856d8865325fe4ca155[m
+Merge: 6d32bde a5d4758
+Author: ntj <ntj362@naver.com>
+Date:   Fri Jun 30 15:05:46 2023 +0900
+
+    Merge branch 'main' of https://github.com/laugh4mile/E-Wallet-With-MSA
+
+[33mcommit 116e156b4074aa092d8adc5f679b48c9e9d3cd6b[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Fri Jun 30 15:05:06 2023 +0900
+
+    .idea ignore
+
+[33mcommit 6d32bde684c6b0624976460f8e5780e9adfa1b5d[m
+Merge: 81a206d 9516dbc
+Author: ntj <ntj362@naver.com>
+Date:   Fri Jun 30 15:03:11 2023 +0900
+
+    Merge branch 'tj'
+
+[33mcommit 9516dbc3d11a06b4546d768063a8fde5471929ff[m
+Author: ntj <ntj362@naver.com>
+Date:   Fri Jun 30 15:02:49 2023 +0900
+
+    forth
+
+[33mcommit 81a206d026ec2e6f2b3c7169510d85c97cffbf1a[m
+Merge: 9547fb6 558c544
+Author: ntj <ntj362@naver.com>
+Date:   Fri Jun 30 15:00:47 2023 +0900
+
+    Merge branch 'tj'
+
+[33mcommit 9547fb6f5548e3dc2d3bc3745c6f6844cd60930e[m
+Author: ntj <ntj362@naver.com>
+Date:   Fri Jun 30 14:59:40 2023 +0900
+
+    idea modify
+
+[33mcommit 558c5440000edf9cae8ca0f88134318d83ecbcd9[m
+Author: ntj <ntj362@naver.com>
+Date:   Fri Jun 30 14:56:03 2023 +0900
+
+    third
+
+[33mcommit f44bc707a9c237bb29377cb8171d1f9fb2cef6cd[m
+Author: ntj <ntj362@naver.com>
+Date:   Fri Jun 30 14:51:17 2023 +0900
+
+    second
+
+[33mcommit a5d47583d6f0542a7d67eeea7cb6406345c8c1f9[m
+Merge: 0afaaa4 cebe590
+Author: Hyunsoo <laugh4mile@naver.com>
+Date:   Fri Jun 30 14:40:11 2023 +0900
+
+    Merge pull request #1 from laugh4mile/hs
+    
+    User Service
+
+[33mcommit 6fdbc3a82ad4842fb0a8c43d0e50be783a36d5c4[m
+Author: ntj <ntj362@naver.com>
+Date:   Fri Jun 30 14:26:37 2023 +0900
+
+    first
+
+[33mcommit cebe590d15e3a5e1ae73a50eda5329e0ff15c174[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Fri Jun 30 14:17:40 2023 +0900
+
+    User Service
+
+[33mcommit 0afaaa455f8a8f91f2bba658579afbd1ea219c95[m
+Merge: 507aaf4 7928208
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Fri Jun 30 14:00:45 2023 +0900
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit 507aaf489521eba3eae49285f820a86518ec5e1a[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Fri Jun 30 14:00:12 2023 +0900
+
+    Module Setting
+
+[33mcommit 79282083a241ebca336082cf15fb33c9c0986230[m
+Author: ntj <ntj362@naver.com>
+Date:   Fri Jun 30 13:53:21 2023 +0900
+
+    test
+
+[33mcommit eabde35d10dcde44027bb573728f3d1faed7c16e[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Fri Jun 30 13:22:59 2023 +0900
+
+    Api Gateway Service
+
+[33mcommit 9287bb7b84f333e59107054b78e252b8b5e34372[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Fri Jun 30 13:16:00 2023 +0900
+
+    Eureka Server
+
+[33mcommit 5c54f44919609237412d04e4ce8ad75bdb13b62c[m
+Author: laugh4mile <laugh4mile@naver.com>
+Date:   Fri Jun 30 13:07:46 2023 +0900
+
+    MSA Project
