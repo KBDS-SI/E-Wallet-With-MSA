@@ -22,7 +22,7 @@ public class ChargeHistoryEntity {
     private String ewalletId;
 
     @CreationTimestamp
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, updatable = false)
     private LocalDateTime transactionTime;
 
     @Column(nullable = false)

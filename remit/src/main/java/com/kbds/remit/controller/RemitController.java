@@ -41,48 +41,48 @@ public class RemitController {
         RemitDto remitDto = mapper.map(remit, RemitDto.class);
         remitDto = remitService.createRemit(remitDto);
 
-        if (remit.getRemitCode().equals("2")) { //remitCode - "1" : 입금, "2" : 출금
-            try {
-                String apiUrl = "http://192.168.61.190:8000/payment-service/createPayMent";
-                URL url = new URL(apiUrl);
-                String postData="{\"sendId\":\"" + remitDto.getUserId() + "\""
-                               + ",\"receiveId\":\"" + remitDto.getOppoUserId() + "\""
-                               + ",\"sendAmt\":\"" + remitDto.getAmt() + "\""
-                               + ",\"ewalletId\":\"" + remitDto.getEwalletId() + "\""
-                               + "}";
-                log.info("postData = " + postData);
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setRequestMethod("POST");
-                conn.setRequestProperty("Content-Type", "application/json");
-                conn.setDoOutput(true);
-
-                byte[] posetDataBytes = postData.getBytes(StandardCharsets.UTF_8);
-                conn.setRequestProperty("Content-Length", String.valueOf(posetDataBytes.length));
-
-                OutputStream outputStream = conn.getOutputStream();
-                outputStream.write(posetDataBytes);
-                outputStream.flush();
-                outputStream.close();
-
-                int responseCode = conn.getResponseCode();
-                if (responseCode == HttpURLConnection.HTTP_OK) {
-                    BufferedReader in = new BufferedReader((new InputStreamReader(conn.getInputStream())));
-                    String inputLine;
-                    StringBuilder response = new StringBuilder();
-
-                    while((inputLine = in.readLine()) != null) {
-                        response.append(inputLine);
-                    }
-                    in.close();
-                    log.info("송금내역 정상 생성 : " + response.toString());
-                } else {
-                    log.info("API 호출 실패!! 응답코드 : " + responseCode);
-                }
-
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
-        }
+//        if (remit.getRemitCode().equals("2")) { //remitCode - "1" : 입금, "2" : 출금
+//            try {
+//                String apiUrl = "http://192.168.61.190:8000/payment-service/createPayMent";
+//                URL url = new URL(apiUrl);
+//                String postData="{\"sendId\":\"" + remitDto.getUserId() + "\""
+//                               + ",\"receiveId\":\"" + remitDto.getOppoUserId() + "\""
+//                               + ",\"sendAmt\":\"" + remitDto.getAmt() + "\""
+//                               + ",\"ewalletId\":\"" + remitDto.getEwalletId() + "\""
+//                               + "}";
+//                log.info("postData = " + postData);
+//                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//                conn.setRequestMethod("POST");
+//                conn.setRequestProperty("Content-Type", "application/json");
+//                conn.setDoOutput(true);
+//
+//                byte[] posetDataBytes = postData.getBytes(StandardCharsets.UTF_8);
+//                conn.setRequestProperty("Content-Length", String.valueOf(posetDataBytes.length));
+//
+//                OutputStream outputStream = conn.getOutputStream();
+//                outputStream.write(posetDataBytes);
+//                outputStream.flush();
+//                outputStream.close();
+//
+//                int responseCode = conn.getResponseCode();
+//                if (responseCode == HttpURLConnection.HTTP_OK) {
+//                    BufferedReader in = new BufferedReader((new InputStreamReader(conn.getInputStream())));
+//                    String inputLine;
+//                    StringBuilder response = new StringBuilder();
+//
+//                    while((inputLine = in.readLine()) != null) {
+//                        response.append(inputLine);
+//                    }
+//                    in.close();
+//                    log.info("송금내역 정상 생성 : " + response.toString());
+//                } else {
+//                    log.info("API 호출 실패!! 응답코드 : " + responseCode);
+//                }
+//
+//            } catch(Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
 
         return new ResponseEntity(HttpStatus.CREATED);
 
