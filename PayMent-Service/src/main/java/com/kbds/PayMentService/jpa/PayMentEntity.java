@@ -15,9 +15,9 @@ public class PayMentEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long useId;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String sendId;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String receiveId;
     @Column(nullable = false)
     private Integer sendAmt;
@@ -25,7 +25,7 @@ public class PayMentEntity implements Serializable {
     private String ewalletId;
 
     @CreationTimestamp
-    @Column(name = "send_at", unique = true)
+    @Column(name = "send_at")
 //    @Column(nullable = true, updatable = false, insertable = false)
 //    @ColumnDefault(value = "CURRENT_TIMESTAMP")
 //    @Temporal(TemporalType.TIMESTAMP)

@@ -15,5 +15,4 @@ public class RemitID implements Serializable {
 
     private String userId;
     private String ewalletId;
-    private Date transTime;
 }

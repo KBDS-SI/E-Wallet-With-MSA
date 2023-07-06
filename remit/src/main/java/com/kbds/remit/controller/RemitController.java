@@ -39,18 +39,18 @@ public class RemitController {
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
         RemitDto remitDto = mapper.map(remit, RemitDto.class);
-        remitService.createRemit(remitDto);
+        remitDto = remitService.createRemit(remitDto);
 
         if (remit.getRemitCode().equals("2")) { //remitCode - "1" : 입금, "2" : 출금
             try {
                 String apiUrl = "http://192.168.61.190:8000/payment-service/createPayMent";
                 URL url = new URL(apiUrl);
-                String postData="{\"sendId\":\"" + remit.getUserId() + "\""
-                               + ",\"receiveId\":\"" + remit.getOppoUserId() + "\""
-                               + ",\"sendAmt\":\"" + remit.getAmt() + "\""
-                               + ",\"ewalletId\":\"" + remit.getEwalletId() + "\""
+                String postData="{\"sendId\":\"" + remitDto.getUserId() + "\""
+                               + ",\"receiveId\":\"" + remitDto.getOppoUserId() + "\""
+                               + ",\"sendAmt\":\"" + remitDto.getAmt() + "\""
+                               + ",\"ewalletId\":\"" + remitDto.getEwalletId() + "\""
                                + "}";
-
+                log.info("postData = " + postData);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
                 conn.setRequestProperty("Content-Type", "application/json");

@@ -19,7 +19,7 @@ public class RemitEntity {
     private String ewalletId;
 
     @CreationTimestamp
-    @Column(name = "trans_time", unique = true)
+    @Column(name = "trans_time")
     private LocalDateTime transTime;
     private String remitCode;
     private BigDecimal amt;

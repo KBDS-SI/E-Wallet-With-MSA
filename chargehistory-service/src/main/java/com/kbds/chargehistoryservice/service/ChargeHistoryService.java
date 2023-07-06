@@ -7,4 +7,6 @@ public interface ChargeHistoryService {
     ChargeHistoryDto createChargeHistory(ChargeHistoryDto chargeHistoryDto);
 
     Iterable<ChargeHistoryEntity> getChargeHistory(String userId);
+
+    Iterable<ChargeHistoryEntity> getChargeHistoryTop5(String userId);
 }

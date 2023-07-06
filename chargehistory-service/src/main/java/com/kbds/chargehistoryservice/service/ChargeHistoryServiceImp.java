@@ -25,6 +25,11 @@ public class ChargeHistoryServiceImp implements ChargeHistoryService{
     }
 
     @Override
+    public Iterable<ChargeHistoryEntity> getChargeHistoryTop5(String userId) {
+        return chargeHistoryRepository.findTop5ByUserIdOrderByTransactionTimeDesc(userId);
+    }
+
+    @Override
     public ChargeHistoryDto createChargeHistory(ChargeHistoryDto chargeHistoryDto) {
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
