@@ -20,8 +20,8 @@ git checkout "test" - test라는 브랜치로 checkout. 체크아웃할 경우 �
 
 
 깃의 간단한 구조
-
-작업 디렉토리(현재 작업중인 곳) - 스테이징 영역(add 진행시 올라가는 곳 staged area) - commit시 변경이력 저장 - 
+		 	     add                                                         commit			  push
+workspace(현재 작업중인 곳) --------------- 스테이징 영역(stage area, index) ------------------ local repository --------------------- remote repository
 
 기본 명령어
 git add [파일경로]     - 해당 파일경로에 있는 변경 내용을 스테이징 영역으로 넘김.
