@@ -12,9 +12,10 @@ spring:
       path: /h2-console
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:tcp://192.168.61.190/~/data
-    username: kbds
-    password: 1234
+#    url: jdbc:h2:tcp://192.168.61.190/~/data
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
 #  jpa:
 #    generate-ddl: true
 #    defer-datasource-initialization: true
@@ -28,9 +29,11 @@ eureka:
   instance:
     # 표기되는 규칙 변경
     instance-id: ${spring.cloud.client.ip-address}:${spring.application.instance_id:${random.value}}
-    hostname: 192.168.61.190
+#    hostname: 192.168.61.190
+    hostname: 192.168.61.252
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://192.168.61.190:8761/eureka
+#      defaultZone: http://192.168.61.190:8761/eureka
+      defaultZone: http://192.168.61.252:8761/eureka

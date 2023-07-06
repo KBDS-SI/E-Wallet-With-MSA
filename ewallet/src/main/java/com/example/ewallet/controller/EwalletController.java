@@ -27,7 +27,7 @@ public class EwalletController {
         this.ewalletService = ewalletService;
     }
 
-    @PostMapping("/ewallet-service")
+    @PostMapping("/createEwallet")
     public ResponseEntity createEwallet(@RequestBody RequestEwallet ewallet){
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
@@ -39,7 +39,7 @@ public class EwalletController {
 
     }
 
-    @GetMapping("/ewallet-service/welcome")
+    @GetMapping("/welcome")
     public String welcome(){
 
         log.info("welcome to logs");

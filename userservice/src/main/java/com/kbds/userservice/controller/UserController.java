@@ -13,6 +13,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+
 @RestController
 @RequestMapping("/")
 @Slf4j
@@ -31,6 +38,77 @@ public class UserController {
         UserDto userDto = mapper.map(requestUser, UserDto.class);
         userService.createUser(userDto);
         log.info("=============="+userDto);
+
+        try {
+            String apiUrl = "http://192.168.61.252:8000/ewallet-service/createEwallet";
+
+            URL url = new URL(apiUrl);
+
+            String postData = "{\"userId\":\"testId\""
+                              + ",\"ewalletId\":\"123123\""
+                              + ",\"amt\":\"0\""
+                              + "}";
+
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setDoOutput(true);
+
+            byte[] postDataBytes = postData.getBytes(StandardCharsets.UTF_8);
+            conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
+
+            OutputStream outputStream = conn.getOutputStream();
+            outputStream.write(postDataBytes);
+            outputStream.flush();
+            outputStream.close();
+
+        //conn.setRequestMethod("GET");
+            /* POST 방식 예제
+            String postData = "param1=value1&param2=value2"; 일반String
+            String postData = "{\"param1\":\"value1\",\"param2\":\"value2\"}"; JSON
+
+            conn.setRequestMethod("POST");
+            conn.setDoOutput(true);
+
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setDoOutput(true);
+
+            // POST 요청 바디 데이터 설정
+            byte[] postDataBytes = postData.getBytes(StandardCharsets.UTF_8);
+            conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
+            conn.getOutputStream().write(postDataBytes);
+
+            JSON 타입일때
+            byte[] postDataBytes = postData.getBytes(StandardCharsets.UTF_8);
+            conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
+
+            OutputStream outputStream = conn.getOutputStream();
+            outputStream.write(postDataBytes);
+            outputStream.flush();
+            outputStream.close();
+             */
+
+            int responseCode = conn.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                String inputLine;
+                StringBuilder response = new StringBuilder();
+
+                while((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+
+                in.close();
+
+            } else {
+                log.info("API 호출이 실패하였습니다. 응답코드 : " + responseCode);
+            }
+
+            conn.disconnect();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
 
         ResponseUser responseUser = mapper.map(userDto, ResponseUser.class);
         return ResponseEntity.status(HttpStatus.CREATED).body(responseUser);

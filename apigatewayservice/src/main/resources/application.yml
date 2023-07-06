@@ -51,6 +51,7 @@ spring:
           predicates:
             - Path=/ewallet-service/**
           filters:
+            - RewritePath=/ewallet-service/(?<segment>.*), /$\{segment}
             #  - AddRequestHeader=second-request, second-request-header2
             #  - AddResponseHeader=second-response, second-response-header2
             - CustomFilter
