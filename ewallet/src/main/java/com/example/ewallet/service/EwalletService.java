@@ -4,4 +4,5 @@ import com.example.ewallet.dto.EwalletDto;
 
 public interface EwalletService {
     EwalletDto createEwallet(EwalletDto ewalletDto);
+    EwalletDto searchEwallet(String userId);
 }

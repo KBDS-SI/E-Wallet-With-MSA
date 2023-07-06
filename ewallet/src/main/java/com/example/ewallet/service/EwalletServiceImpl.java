@@ -26,4 +26,14 @@ public class EwalletServiceImpl implements EwalletService {
         ewalletRepository.save(ewalletEntity);
         return null;
     }
+
+    @Override
+    public EwalletDto searchEwallet(String userId) {
+        EwalletEntity ewalletEntity = ewalletRepository.findByUserId(userId);
+        ModelMapper mapper = new ModelMapper();
+        mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        EwalletDto ewalletDto = mapper.map(ewalletEntity, EwalletDto.class);
+
+        return ewalletDto;
+    }
 }
