@@ -12,6 +12,6 @@ public class PayMentDto implements Serializable {
     private String receiveId;
     private BigDecimal sendAmt;
     private Date sendAt;
-
+    private String ewalletId;
     private Long useId;
 }

@@ -15,10 +15,10 @@ import java.time.LocalDateTime;
 @Table(name="ChargeHistory")
 public class ChargeHistoryEntity {
     @Id
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String userId;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String ewalletId;
 
     @CreationTimestamp

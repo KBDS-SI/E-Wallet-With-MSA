@@ -6,7 +6,9 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://192.168.61.190:8761/eureka
+      defaultZone: http://192.168.61.252:8761/eureka # 회사 내꺼
+#      defaultZone: http://192.168.0.3:8761/eureka # 울집 pc
+#      defaultZone: http://192.168.61.190:8761/eureka # 회사 대리님꺼
 
 spring:
   application:
@@ -49,17 +51,46 @@ spring:
           predicates:
             - Path=/ewallet-service/**
           filters:
+            - RewritePath=/ewallet-service/(?<segment>.*), /$\{segment}
             #  - AddRequestHeader=second-request, second-request-header2
             #  - AddResponseHeader=second-response, second-response-header2
             - CustomFilter
+        #### USER ##############################################
         - id: user
           uri: lb://USER-SERVICE
           predicates:
-            - Path=/user-service/**
+            - Path=/user-service/join
+            - Method=POST
           filters:
-            #  - AddRequestHeader=second-request, second-request-header2
-            #  - AddResponseHeader=second-response, second-response-header2
-            - CustomFilter
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        - id: user
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/login
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+#        - id: user
+#          uri: lb://USER-SERVICE
+#          predicates:
+#            - Path=/user-service/**
+#            - Method=GET
+#          filters:
+#            - RemoveRequestHeader=Cookie
+#            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+#            - CustomFilter
+        - id: user
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/health-check
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
+        #### USER ##############################################
         - id: remit
           uri: lb://REMIT-SERVICE
           predicates:
@@ -84,3 +115,5 @@ spring:
             #  - AddRequestHeader=second-request, second-request-header2
             #  - AddResponseHeader=second-response, second-response-header2
             - CustomFilter
+token:
+  secret: user_token

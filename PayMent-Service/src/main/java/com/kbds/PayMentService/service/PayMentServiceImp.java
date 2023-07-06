@@ -27,7 +27,7 @@ public class PayMentServiceImp implements PayMentService{
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         PayMentEntity payMentEntity = mapper.map(paymentDto, PayMentEntity.class);
-
+        log.info("payMentEntity : " + payMentEntity.toString());
         payMentRepository.save(payMentEntity);
 
         PayMentDto returnPayMentDto = mapper.map(payMentEntity, PayMentDto.class);
