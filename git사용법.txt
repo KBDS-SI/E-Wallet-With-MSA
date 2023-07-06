@@ -53,3 +53,4 @@ git commit -m "변경내용(comment)" - add를 한 파일(스테이징영역에 
 
 remote repository에 저장
 git push origin [branch명]          - commit된 것을 해당 브랜치의 repository로 반영한다.
+
