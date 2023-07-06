@@ -7,7 +7,9 @@ spring:
     #test
     #test22
     #test33
-
+    #test44
+    #test55
+    
 eureka:
   client:
     register-with-eureka : false
