@@ -11,7 +11,7 @@ public class RequestEwallet {
     @NotNull
     private String userId;
 
-    @NotNull
+//    @NotNull
     private String ewalletId;
 
     @NotNull
