@@ -1,5 +1,6 @@
 package com.kbds.chargehistoryservice.service;
 
+import com.example.ewallet.vo.RequestEwallet;
 import com.example.ewallet.vo.ResponseEwallet;
 import com.kbds.chargehistoryservice.client.EwalletServiceClient;
 import com.kbds.chargehistoryservice.client.RemitServiceClient;
@@ -48,7 +49,10 @@ public class ChargeHistoryServiceImp implements ChargeHistoryService{
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         ChargeHistoryEntity chargeHistoryEntity = mapper.map(chargeHistoryDto, ChargeHistoryEntity.class);
-        chargeHistoryEntity.setFinalAmt(responseEwallet.getBody().getAmt().add(new BigDecimal(chargeHistoryEntity.getAmt().toString())));
+
+        BigDecimal ewalletAmt = responseEwallet.getBody().getAmt();
+        log.info("ewalletAmt : " + ewalletAmt);
+        chargeHistoryEntity.setFinalAmt(ewalletAmt.add(chargeHistoryEntity.getAmt()));
         chargeHistoryRepository.save(chargeHistoryEntity);
 
         /* 충전 후 입출금 이력에도 INSERT 처리 */
@@ -61,9 +65,16 @@ public class ChargeHistoryServiceImp implements ChargeHistoryService{
         remit.setMemo("충전");
         remit.setOppoUserId(chargeHistoryDto.getUserId());
         remit.setCancelYn("0");
-        remit.setFinBal(new BigDecimal("50000000"));
-
+        remit.setFinBal(ewalletAmt.add(chargeHistoryDto.getAmt()));
+        log.info("ewalletAmt : " + ewalletAmt);
         ResponseEntity createRemitRes =  remitServiceClient.createRemit(remit);
+
+        RequestEwallet requestEwallet = new RequestEwallet();
+        requestEwallet.setUserId(chargeHistoryDto.getUserId());
+        requestEwallet.setEwalletId(chargeHistoryDto.getEwalletId());
+        requestEwallet.setAmt(ewalletAmt.add(chargeHistoryDto.getAmt()));
+        log.info("requestEwallet.getAmt() : " + requestEwallet.getAmt());
+        responseEwallet = ewalletServiceClient.updateBalance(requestEwallet);
 
         ChargeHistoryDto returnChargeHistoryDto = mapper.map(chargeHistoryEntity, ChargeHistoryDto.class);
         return returnChargeHistoryDto;

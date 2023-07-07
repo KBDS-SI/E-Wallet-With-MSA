@@ -47,6 +47,8 @@ public class ChargeHistoryController {
         ChargeHistoryDto chargeHistoryDto = mapper.map(chargeHistoryRequest, ChargeHistoryDto.class);
         chargeHistoryService.createChargeHistory(chargeHistoryDto);
 
+        log.info("server.port = " + env.getProperty("server.port"));
+
         String returnString = "";
 
 //        try {
