@@ -61,32 +61,18 @@ public class EwalletServiceImpl implements EwalletService {
             ewalletDto1 = em.find(EwalletDto.class, ewalletDto);
             log.info("ewalletDto1 : " + ewalletDto1.toString());
 
-            CriteriaBuilder cb = em.getCriteriaBuilder();
+            // JPQL 쿼리 작성
+            String jpql = "UPDATE ewallet SET atm = :newAtm WHERE USER_ID = :userId AND EWALLET_ID = :ewalletId";
 
-            CriteriaUpdate<EwalletDto> updateCriteria = cb.createCriteriaUpdate(EwalletDto.class);
-            Root<EwalletDto> root = updateCriteria.from(EwalletDto.class);
-
-            updateCriteria.set(root.get("amt"), ewalletDto1.getAmt().add(ewalletDto.getAmt()));
-            Predicate condition = cb.and(
-                    cb.equal(root.get("userId"), ewalletDto.getUserId()),
-                    cb.equal(root.get("ewalletId"), ewalletDto.getEwalletId())
-            );
-            updateCriteria.where(condition);
-
-            // 업데이트 실행
-            int updatedCount = em.createQuery(updateCriteria).executeUpdate();
+            // JPQL 실행
+            int updatedCount = em.createQuery(jpql)
+                    .setParameter("newAtm", ewalletDto1.getAmt().add(ewalletDto.getAmt()))
+                    .setParameter("userId", ewalletDto.getUserId())
+                    .setParameter("ewalletId", ewalletDto.getEwalletId())
+                    .executeUpdate();
 
             // 업데이트된 엔티티 수 출력
             log.info("Updated count: " + updatedCount);
-
-
-            // 엔티티 수정
-//            ewalletDto1.setAmt(ewalletDto1.getAmt().add(ewalletDto.getAmt()));
-
-            // merge()를 사용하여 업데이트 수행
-//            EwalletDto updateEwallet = em.merge(ewalletDto1);
-
-            // 업데이트된 엔티티 확인
 
             // 트랜잭션 커밋
             em.getTransaction().commit();
