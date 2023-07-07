@@ -11,7 +11,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EwalletID implements Serializable {
-    private String userId;
+//    private String userId;
     private String ewalletId;
 //    private Long id;
 }

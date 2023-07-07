@@ -9,10 +9,9 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name="ewallet")
-@IdClass(EwalletID.class)
 public class EwalletEntity {
 
-    @Id
+//    @Id
     private String userId;
     @Id
     private String ewalletId;
