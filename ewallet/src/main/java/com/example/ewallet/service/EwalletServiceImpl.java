@@ -3,15 +3,17 @@ package com.example.ewallet.service;
 import com.example.ewallet.dto.EwalletDto;
 import com.example.ewallet.jpa.EwalletEntity;
 import com.example.ewallet.jpa.EwalletRepository;
-import jakarta.persistence.EntityManager;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Service
+@Slf4j
 public class EwalletServiceImpl implements EwalletService {
     @Autowired
     EwalletRepository ewalletRepository;
@@ -43,14 +45,18 @@ public class EwalletServiceImpl implements EwalletService {
 
     @Override
     public EwalletDto updateBalance(EwalletDto ewalletDto) {
-        EntityManager em = null;
-        em.getTransaction().begin();
+        EwalletEntity ewalletEntity = ewalletRepository.findByUserId(ewalletDto.getUserId());
 
-        EwalletDto ewalletDto1 = em.find(EwalletDto.class, ewalletDto);
+        ModelMapper mapper = new ModelMapper();
+        mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
+        EwalletDto ewalletDto1 = mapper.map(ewalletEntity, EwalletDto.class);
+        BigDecimal finalBal = ewalletDto1.getAmt().add(ewalletDto.getAmt());
         ewalletDto1.setAmt(ewalletDto1.getAmt().add(ewalletDto.getAmt()));
-        em.getTransaction().commit();
+        EwalletEntity ewalletEntity1 = mapper.map(ewalletDto1, EwalletEntity.class);
+        ewalletRepository.save(ewalletEntity1);
 
-        return ewalletDto1;
+        ewalletDto = mapper.map(ewalletEntity1, EwalletDto.class);
+        return ewalletDto;
     }
 }
