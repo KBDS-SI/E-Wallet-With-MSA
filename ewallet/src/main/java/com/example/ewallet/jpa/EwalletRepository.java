@@ -6,4 +6,5 @@ public interface EwalletRepository extends CrudRepository<EwalletEntity, Ewallet
     EwalletEntity findByEwalletId(EwalletID ewalletID);
 
     EwalletEntity findByUserId(String userId);
+
 }

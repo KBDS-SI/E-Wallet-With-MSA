@@ -10,12 +10,16 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "remit")
-@IdClass(RemitID.class)
+//@IdClass(RemitID.class)
 public class RemitEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long num;
+
+    @Column(nullable = false)
     private String userId;
-    @Id
+    @Column(nullable = false)
     private String ewalletId;
 
     @CreationTimestamp

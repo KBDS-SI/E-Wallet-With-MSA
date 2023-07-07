@@ -12,7 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RemitID implements Serializable {
-
+    private Long num;
     private String userId;
     private String ewalletId;
 }

@@ -1,5 +1,7 @@
 package com.kbds.chargehistoryservice.service;
 
+import com.example.ewallet.vo.ResponseEwallet;
+import com.kbds.chargehistoryservice.client.EwalletServiceClient;
 import com.kbds.chargehistoryservice.client.RemitServiceClient;
 import com.kbds.chargehistoryservice.dto.ChargeHistoryDto;
 import com.kbds.chargehistoryservice.jpa.ChargeHistoryEntity;
@@ -24,10 +26,13 @@ public class ChargeHistoryServiceImp implements ChargeHistoryService{
 
     RemitServiceClient remitServiceClient;
 
+    EwalletServiceClient ewalletServiceClient;
+
     @Autowired
-    public ChargeHistoryServiceImp(ChargeHistoryRepository chargeHistoryRepository, RemitServiceClient remitServiceClient) {
+    public ChargeHistoryServiceImp(ChargeHistoryRepository chargeHistoryRepository, RemitServiceClient remitServiceClient, EwalletServiceClient ewalletServiceClient) {
         this.chargeHistoryRepository = chargeHistoryRepository;
         this.remitServiceClient = remitServiceClient;
+        this.ewalletServiceClient = ewalletServiceClient;
     }
 
     @Override
@@ -37,10 +42,13 @@ public class ChargeHistoryServiceImp implements ChargeHistoryService{
 
     @Override
     public ChargeHistoryDto createChargeHistory(ChargeHistoryDto chargeHistoryDto) {
+        ResponseEntity<ResponseEwallet> responseEwallet = ewalletServiceClient.getSearchEwallet(chargeHistoryDto.getUserId());
+        chargeHistoryDto.setEwalletId(responseEwallet.getBody().getEwalletId());
+
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         ChargeHistoryEntity chargeHistoryEntity = mapper.map(chargeHistoryDto, ChargeHistoryEntity.class);
-        chargeHistoryEntity.setFinalAmt(new BigDecimal("0").add(new BigDecimal(chargeHistoryEntity.getAmt().toString())));
+        chargeHistoryEntity.setFinalAmt(responseEwallet.getBody().getAmt().add(new BigDecimal(chargeHistoryEntity.getAmt().toString())));
         chargeHistoryRepository.save(chargeHistoryEntity);
 
         /* 충전 후 입출금 이력에도 INSERT 처리 */

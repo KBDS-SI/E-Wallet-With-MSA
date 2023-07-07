@@ -66,6 +66,18 @@ public class EwalletController {
         return ResponseEntity.status(HttpStatus.OK).body(responseEwallet);
     }
 
+    @PostMapping("/updateBalance")
+    public ResponseEntity<ResponseEwallet> updateBalance(@RequestBody RequestEwallet requestEwallet){
+        ModelMapper mapper = new ModelMapper();
+        mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+
+        EwalletDto ewalletDto = mapper.map(requestEwallet, EwalletDto.class);
+        ewalletDto = ewalletService.updateBalance(ewalletDto);
+
+        ResponseEwallet responseEwallet = mapper.map(ewalletDto, ResponseEwallet.class);
+        return ResponseEntity.status(HttpStatus.OK).body(responseEwallet);
+    }
+
     @GetMapping("/welcome")
     public String welcome(){
 

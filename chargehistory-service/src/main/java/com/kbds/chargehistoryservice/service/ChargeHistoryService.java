@@ -9,4 +9,5 @@ public interface ChargeHistoryService {
     Iterable<ChargeHistoryEntity> getChargeHistory(String userId);
 
     Iterable<ChargeHistoryEntity> getChargeHistoryTop5(String userId);
+
 }
