@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService{
         UserDto returnUserDto = mapper.map(userEntity, UserDto.class);
         RequestEwallet ewallet = new RequestEwallet();
         ewallet.setUserId(userDto.getUserId());
-        ewallet.setEwalletId(userDto.getUserId());
+//        ewallet.setEwalletId(userDto.getUserId());
         ewallet.setAmt(BigDecimal.valueOf(0));
         ResponseEwallet responseEwallet = ewalletServiceClient.createEwallet(ewallet);
 
