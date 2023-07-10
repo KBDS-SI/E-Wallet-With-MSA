@@ -1,10 +1,11 @@
 server:
   port: 0
 #  address: 192.168.61.252
-
 spring:
   application:
     name: user-service
+  config:
+    import: classpath:/bootstrap.yml
   h2:
     console:
       enabled: true
@@ -14,11 +15,6 @@ spring:
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:testdb
-  cloud:
-    config:
-      name: ewalletconfig # yml 파일명 앞부분
-  config:
-    import: optional:configserver:http://192.168.61.252:8888 # 구성정보 설정
 eureka:
   instance:
     instance-id: ${spring.cloud.client.ip-address}:${spring.application.instance_id:${random.value}}
@@ -44,7 +40,7 @@ gateway:
 #  secret: user_token
 
 management:
-  endpoint:
+  endpoints:
     web:
       exposure:
-        include: info, refresh, health, beans
+        include: info, refresh, health, beans, httptrace

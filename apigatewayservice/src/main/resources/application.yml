@@ -13,6 +13,8 @@ eureka:
 spring:
   application:
     name: apigateway-service
+  config:
+    import: classpath:/bootstrap.yml
   cloud:
     gateway:
       default-filters:
@@ -55,7 +57,15 @@ spring:
             #  - AddRequestHeader=second-request, second-request-header2
             #  - AddResponseHeader=second-response, second-response-header2
             - CustomFilter
-        #### USER ##############################################
+######  USER START  ##############################################
+#        - id: user
+#          uri: lb://USER-SERVICE
+#          predicates:
+#            - Path=/user-service/**
+#            - Method=GET,POST
+#          filters:
+#            - RemoveRequestHeader=Cookie
+#            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
         - id: user
           uri: lb://USER-SERVICE
           predicates:
@@ -72,15 +82,6 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
-#        - id: user
-#          uri: lb://USER-SERVICE
-#          predicates:
-#            - Path=/user-service/**
-#            - Method=GET
-#          filters:
-#            - RemoveRequestHeader=Cookie
-#            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
-#            - CustomFilter
         - id: user
           uri: lb://USER-SERVICE
           predicates:
@@ -90,7 +91,23 @@ spring:
             - RemoveRequestHeader=Cookie
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
             - AuthorizationHeaderFilter
-        #### USER ##############################################
+        - id: user
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/actuator/**
+            - Method=GET,POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        - id: user
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/dd, /user-service/hello, /user-service/h2-console
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+######  USER END  ##############################################
         - id: remit
           uri: lb://REMIT-SERVICE
           predicates:
@@ -115,5 +132,11 @@ spring:
             #  - AddRequestHeader=second-request, second-request-header2
             #  - AddResponseHeader=second-response, second-response-header2
             - CustomFilter
-token:
-  secret: user_token
+#token:
+#  secret: user_token
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, refresh, health, beans, httpexchanges
