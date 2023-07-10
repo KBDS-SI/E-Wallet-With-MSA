@@ -2,12 +2,8 @@ package com.example.ewallet.service;
 
 import com.example.ewallet.dto.EwalletDto;
 import com.example.ewallet.jpa.EwalletEntity;
-import com.example.ewallet.jpa.EwalletID;
 import com.example.ewallet.jpa.EwalletRepository;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -63,7 +59,12 @@ public class EwalletServiceImpl implements EwalletService {
         EwalletEntity ewalletEntity1 = em.find(EwalletEntity.class, ewalletDto.getEwalletId());
         log.info("ewalletEntity1 : " + ewalletEntity1.toString());
 
-        ewalletEntity1.setAmt(ewalletEntity1.getAmt().add(ewalletDto.getAmt()));
+        if ("1".equals(ewalletDto.getAddYn())) {
+            ewalletEntity1.setAmt(ewalletEntity1.getAmt().add(ewalletDto.getAmt()));
+        } else {
+            ewalletEntity1.setAmt(ewalletEntity1.getAmt().subtract(ewalletDto.getAmt()));
+        }
+
         log.info("ewalletEntity1,2 : " + ewalletEntity1.toString());
 
         return ewalletDto;

@@ -10,6 +10,7 @@ public class EwalletDto {
     private String userId;
     private String ewalletId;
     private BigDecimal amt;
+    private String addYn;
 
     private Date createdAt;
 }

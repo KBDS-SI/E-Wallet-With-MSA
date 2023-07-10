@@ -16,4 +16,6 @@ public class RequestEwallet {
 
     @NotNull
     private BigDecimal amt;
+
+    private String addYn;
 }
