@@ -1,7 +1,7 @@
 package com.kbds.remit.service;
 
-import com.kbds.PayMentService.vo.PayMentRequest;
-import com.kbds.PayMentService.vo.PayMentResponse;
+import com.kbds.remit.vo.PayMentRequest;
+import com.kbds.remit.vo.PayMentResponse;
 import com.kbds.remit.client.PayMentServiceClient;
 import com.kbds.remit.dto.RemitDto;
 import com.kbds.remit.jpa.RemitEntity;
@@ -45,17 +45,28 @@ public class RemitServiceImpl implements RemitService{
         log.info("remitEntity : " + remitEntity.toString());
         remitRepository.save(remitEntity);
 
+        PayMentRequest payMentRequest = new PayMentRequest();
         if ("2".equals(remitDto.getRemitCode()) && !remitDto.getOppoUserId().isEmpty()) {
-            PayMentRequest payMentRequest = new PayMentRequest();
             payMentRequest.setSendId(remitDto.getUserId());
             payMentRequest.setEwalletId(remitDto.getEwalletId());
             payMentRequest.setReceiveId(remitDto.getOppoUserId());
             payMentRequest.setSendAmt(remitDto.getAmt());
 
-            List<PayMentResponse> payMentResponseList= payMentServiceClient.createPayMent(payMentRequest);
+            List<PayMentResponse> payMentResponseList = payMentServiceClient.createPayMent(payMentRequest);
         }
 
         return mapper.map(remitEntity, RemitDto.class);
 
+    }
+
+    @Override
+    public RemitDto createRemitFromPayMent(RemitDto remitDto) {
+        ModelMapper mapper = new ModelMapper();
+        mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        RemitEntity remitEntity = mapper.map(remitDto, RemitEntity.class);
+        log.info("remitEntity : " + remitEntity.toString());
+        remitRepository.save(remitEntity);
+
+        return mapper.map(remitEntity, RemitDto.class);
     }
 }

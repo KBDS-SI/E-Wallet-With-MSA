@@ -65,6 +65,18 @@ public class RemitController {
 
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
+
+    @PostMapping("/payMentToRemit")
+    public ResponseEntity createRemitFromPayMent(@RequestBody RequestRemit remit){
+        ModelMapper mapper = new ModelMapper();
+        mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+
+        RemitDto remitDto = mapper.map(remit, RemitDto.class);
+        remitDto = remitService.createRemitFromPayMent(remitDto);
+
+        return new ResponseEntity(HttpStatus.CREATED);
+
+    }
     @GetMapping("/welcome")
     public String welcome(){
         log.info("welcome to remit");

@@ -72,7 +72,7 @@ public class ChargeHistoryServiceImp implements ChargeHistoryService{
         RequestEwallet requestEwallet = new RequestEwallet();
         requestEwallet.setUserId(chargeHistoryDto.getUserId());
         requestEwallet.setEwalletId(chargeHistoryDto.getEwalletId());
-        requestEwallet.setAmt(ewalletAmt.add(chargeHistoryDto.getAmt()));
+        requestEwallet.setAmt(chargeHistoryDto.getAmt());
         log.info("requestEwallet.getAmt() : " + requestEwallet.getAmt());
         responseEwallet = ewalletServiceClient.updateBalance(requestEwallet);
 

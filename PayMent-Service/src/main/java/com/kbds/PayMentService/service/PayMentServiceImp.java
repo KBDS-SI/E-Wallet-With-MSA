@@ -3,11 +3,10 @@ package com.kbds.PayMentService.service;
 import com.example.ewallet.vo.RequestEwallet;
 import com.example.ewallet.vo.ResponseEwallet;
 import com.kbds.PayMentService.client.EwalletServiceClient;
-import com.kbds.PayMentService.client.RemitServiceClient;
+//import com.kbds.PayMentService.client.RemitServiceClient;
 import com.kbds.PayMentService.dto.PayMentDto;
 import com.kbds.PayMentService.jpa.PayMentEntity;
 import com.kbds.PayMentService.jpa.PayMentRepository;
-import com.kbds.remit.vo.RequestRemit;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -26,13 +25,13 @@ public class PayMentServiceImp implements PayMentService{
 
     EwalletServiceClient ewalletServiceClient;
 
-    RemitServiceClient remitServiceClient;
+//    RemitServiceClient remitServiceClient;
 
     @Autowired
-    public PayMentServiceImp(PayMentRepository payMentRepository, EwalletServiceClient ewalletServiceClient, RemitServiceClient remitServiceClient) {
+    public PayMentServiceImp(PayMentRepository payMentRepository, EwalletServiceClient ewalletServiceClient/*, RemitServiceClient remitServiceClient*/) {
         this.payMentRepository = payMentRepository;
         this.ewalletServiceClient = ewalletServiceClient;
-        this.remitServiceClient = remitServiceClient;
+//        this.remitServiceClient = remitServiceClient;
     }
 
     @Override
@@ -76,31 +75,30 @@ public class PayMentServiceImp implements PayMentService{
             requestEwallet.setAddYn("1"); // 입금처리
             ResponseEntity<ResponseEwallet> reponseEwallet = ewalletServiceClient.updateBalance(requestEwallet);
 
-            // 입출금이력 정보 UPDATE
-            /*
-            private String userId;
-            private String ewalletId;
-            private String remitCode;
-            private BigDecimal amt;
-            private String memo;
-            private String oppoUserId;
-            private String cancelYn;
-            private BigDecimal finBal;
-             */
-            RequestRemit requestRemit = new RequestRemit();
-            requestRemit.setUserId(payMentEntity.getReceiveId());
-            requestRemit.setEwalletId(reponseEwallet.getBody().getEwalletId());
-            requestRemit.setRemitCode("1");
-            requestRemit.setAmt(new BigDecimal(payMentEntity.getSendAmt().toString()));
-            requestRemit.setOppoUserId(payMentEntity.getSendId());
-            requestRemit.setMemo("송금 받음");
-            requestRemit.setCancelYn("0");
-            requestRemit.setFinBal(reponseEwallet.getBody().getAmt());
-            ResponseEntity responseEntity = remitServiceClient.createRemit(requestRemit);
+//            // 입출금이력 정보 UPDATE
+//            /*
+//            private String userId;
+//            private String ewalletId;
+//            private String remitCode;
+//            private BigDecimal amt;
+//            private String memo;
+//            private String oppoUserId;
+//            private String cancelYn;
+//            private BigDecimal finBal;
+//             */
+//            RequestRemit requestRemit = new RequestRemit();
+//            requestRemit.setUserId(payMentEntity.getReceiveId());
+//            requestRemit.setEwalletId(reponseEwallet.getBody().getEwalletId());
+//            requestRemit.setRemitCode("1");
+//            requestRemit.setAmt(new BigDecimal(payMentEntity.getSendAmt().toString()));
+//            requestRemit.setOppoUserId(payMentEntity.getSendId());
+//            requestRemit.setMemo("송금 받음");
+//            requestRemit.setCancelYn("0");
+//            requestRemit.setFinBal(reponseEwallet.getBody().getAmt());
+//            ResponseEntity responseEntity = remitServiceClient.createRemitFromPayMent(requestRemit);
 
             // 임시 송금테이블 삭제
             payMentRepository.deleteById(payMentEntity.getUseId());
-
         }
 
         return "송금이 완료 되었습니다.";

@@ -81,7 +81,7 @@ public class EwalletController {
     @GetMapping("/welcome")
     public String welcome(){
 
-        log.info("welcome to logsffaasaaf");
+        log.info("welcome to ewallet");
 
         return "welcome to ewallet";
     }
