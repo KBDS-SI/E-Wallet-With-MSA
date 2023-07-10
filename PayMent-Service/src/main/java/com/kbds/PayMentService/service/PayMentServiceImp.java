@@ -3,7 +3,6 @@ package com.kbds.PayMentService.service;
 import com.example.ewallet.vo.RequestEwallet;
 import com.example.ewallet.vo.ResponseEwallet;
 import com.kbds.PayMentService.client.EwalletServiceClient;
-//import com.kbds.PayMentService.client.RemitServiceClient;
 import com.kbds.PayMentService.dto.PayMentDto;
 import com.kbds.PayMentService.jpa.PayMentEntity;
 import com.kbds.PayMentService.jpa.PayMentRepository;
@@ -25,13 +24,10 @@ public class PayMentServiceImp implements PayMentService{
 
     EwalletServiceClient ewalletServiceClient;
 
-//    RemitServiceClient remitServiceClient;
-
     @Autowired
-    public PayMentServiceImp(PayMentRepository payMentRepository, EwalletServiceClient ewalletServiceClient/*, RemitServiceClient remitServiceClient*/) {
+    public PayMentServiceImp(PayMentRepository payMentRepository, EwalletServiceClient ewalletServiceClient) {
         this.payMentRepository = payMentRepository;
         this.ewalletServiceClient = ewalletServiceClient;
-//        this.remitServiceClient = remitServiceClient;
     }
 
     @Override
