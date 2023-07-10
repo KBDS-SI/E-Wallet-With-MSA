@@ -58,15 +58,4 @@ public class RemitServiceImpl implements RemitService{
         return mapper.map(remitEntity, RemitDto.class);
 
     }
-
-    @Override
-    public RemitDto createRemitFromPayMent(RemitDto remitDto) {
-        ModelMapper mapper = new ModelMapper();
-        mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-        RemitEntity remitEntity = mapper.map(remitDto, RemitEntity.class);
-        log.info("remitEntity : " + remitEntity.toString());
-        remitRepository.save(remitEntity);
-
-        return mapper.map(remitEntity, RemitDto.class);
-    }
 }

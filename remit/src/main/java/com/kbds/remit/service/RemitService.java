@@ -9,6 +9,4 @@ public interface RemitService
 
     Iterable<RemitEntity> getRemitByAll(RemitDto remitDto);
 
-    RemitDto createRemitFromPayMent(RemitDto remitDto);
-
 }
