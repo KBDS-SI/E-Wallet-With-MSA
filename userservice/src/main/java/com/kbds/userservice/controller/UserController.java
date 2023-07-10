@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,10 +26,12 @@ import java.nio.charset.StandardCharsets;
 @Slf4j
 public class UserController {
     private UserService userService;
+    private Environment env;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, Environment env) {
         this.userService = userService;
+        this.env = env;
     }
 
     @PostMapping("/join")
@@ -109,6 +112,10 @@ public class UserController {
 
     @GetMapping("/health-check")
     public String healthcheck() {
-        return "인증없이 들어오면 안되는데...";
+        return String.format("It's Working in User Service"
+        + ",port(local.server.port)=" + env.getProperty("local.server.port")+"\n"
+        + ",port(server.port)=" + env.getProperty("server.port")+"\n"
+        + ",token secret=" + env.getProperty("token.secret")+"\n"
+        + ",token expiration time=" + env.getProperty("tokens.expiration.time"));
     }
 }

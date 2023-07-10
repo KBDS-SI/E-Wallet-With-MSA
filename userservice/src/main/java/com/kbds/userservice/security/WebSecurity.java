@@ -22,6 +22,7 @@ public class WebSecurity  {
     private Environment env;
     private final ObjectPostProcessor<Object> objectPostProcessor;
     private static final String[] AUTH_WHITELIST = {
+            "/actuator/**",
             "/hello",
             "/health-check",
             "/join",
