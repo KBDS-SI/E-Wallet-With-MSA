@@ -11,6 +11,6 @@ spring:
     config:
       server:
         native:
-          search-locations: ../../../../
+          search-locations: ./
         git:
           uri: https://github.com/KBDS-TD/E-Wallet-Config.git

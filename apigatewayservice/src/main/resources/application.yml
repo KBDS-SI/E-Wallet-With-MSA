@@ -6,7 +6,6 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-#      defaultZone: http://192.168.61.252:8761/eureka # 회사 내꺼
       defaultZone: {ip.eureka}
 
 spring:
@@ -44,8 +43,6 @@ spring:
           predicates:
             - Path=/second-service/**
           filters:
-            #  - AddRequestHeader=second-request, second-request-header2
-            #  - AddResponseHeader=second-response, second-response-header2
             - CustomFilter
         - id: ewallet
           uri: lb://EWALLET-SERVICE
@@ -53,18 +50,8 @@ spring:
             - Path=/ewallet-service/**
           filters:
             - RewritePath=/ewallet-service/(?<segment>.*), /$\{segment}
-            #  - AddRequestHeader=second-request, second-request-header2
-            #  - AddResponseHeader=second-response, second-response-header2
             - CustomFilter
 ######  USER START  ##############################################
-#        - id: user
-#          uri: lb://USER-SERVICE
-#          predicates:
-#            - Path=/user-service/**
-#            - Method=GET,POST
-#          filters:
-#            - RemoveRequestHeader=Cookie
-#            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
         - id: user
           uri: lb://USER-SERVICE
           predicates:
@@ -112,24 +99,18 @@ spring:
           predicates:
             - Path=/remit/**
           filters:
-            #  - AddRequestHeader=second-request, second-request-header2
-            #  - AddResponseHeader=second-response, second-response-header2
             - CustomFilter
         - id: payment-service
           uri: lb://PAYMENT-SERVICE
           predicates:
             - Path=/payment-service/**
           filters:
-            #  - AddRequestHeader=second-request, second-request-header2
-            #  - AddResponseHeader=second-response, second-response-header2
             - CustomFilter
         - id: chargehistory-service
           uri: lb://CHARGEHISTORY-SERVICE
           predicates:
             - Path=/chargehistory-service/**
           filters:
-            #  - AddRequestHeader=second-request, second-request-header2
-            #  - AddResponseHeader=second-response, second-response-header2
             - CustomFilter
 
 management:
