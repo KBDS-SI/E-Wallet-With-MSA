@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,10 +26,12 @@ import java.nio.charset.StandardCharsets;
 @Slf4j
 public class UserController {
     private UserService userService;
+    private Environment env;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, Environment env) {
         this.userService = userService;
+        this.env = env;
     }
 
     @PostMapping("/join")
@@ -38,49 +41,6 @@ public class UserController {
         UserDto userDto = mapper.map(requestUser, UserDto.class);
         UserDto user = userService.createUser(userDto);
         log.info("=============="+userDto);
-
-//        try {
-//            String apiUrl = "http://192.168.61.252:8000/ewallet-service/createEwallet";
-//
-//            URL url = new URL(apiUrl);
-//
-//            String postData = "{\"userId\":\"testId\""
-//                              + ",\"ewalletId\":\"123123\""
-//                              + ",\"amt\":\"0\""
-//                              + "}";
-//
-//            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-//            conn.setRequestMethod("POST");
-//            conn.setRequestProperty("Content-Type", "application/json");
-//            conn.setDoOutput(true);
-//
-//            byte[] postDataBytes = postData.getBytes(StandardCharsets.UTF_8);
-//            conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
-//
-//            OutputStream outputStream = conn.getOutputStream();
-//            outputStream.write(postDataBytes);
-//            outputStream.flush();
-//            outputStream.close();
-//
-//            int responseCode = conn.getResponseCode();
-//            if (responseCode == HttpURLConnection.HTTP_OK) {
-//                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-//                String inputLine;
-//                StringBuilder response = new StringBuilder();
-//
-//                while((inputLine = in.readLine()) != null) {
-//                    response.append(inputLine);
-//                }
-//
-//                in.close();
-//
-//            } else {
-//                log.info("API 호출이 실패하였습니다. 응답코드 : " + responseCode);
-//            }
-//            conn.disconnect();
-//        } catch(Exception e) {
-//            e.printStackTrace();
-//        }
 
         ResponseUser responseUser = mapper.map(userDto, ResponseUser.class);
         return ResponseEntity.status(HttpStatus.CREATED).body(responseUser);
@@ -99,16 +59,29 @@ public class UserController {
 
     @GetMapping("/hello")
     public String hello() {
-        return "hello";
+        return String.format("It's Working in User Service"
+                + ",port(local.server.port)=" + env.getProperty("local.server.port")+"\n"
+                + ",port(server.port)=" + env.getProperty("server.port")+"\n"
+                + ",token secret=" + env.getProperty("token.secret")+"\n"
+                + ",token expiration time=" + env.getProperty("token.expiration_time"));
     }
 
-    @GetMapping("/zz")
-    public String zz() {
-        return "zz";
+    @GetMapping("/ss")
+    public String ss() {
+        return "ㄴㄴ";
+    }
+
+    @GetMapping("/dd")
+    public String dd() {
+        return "ㅇㅇ";
     }
 
     @GetMapping("/health-check")
     public String healthcheck() {
-        return "인증없이 들어오면 안되는데...";
+        return String.format("It's Working in User Service"
+        + ",port(local.server.port)=" + env.getProperty("local.server.port")+"\n"
+        + ",port(server.port)=" + env.getProperty("server.port")+"\n"
+        + ",token secret=" + env.getProperty("token.secret")+"\n"
+        + ",token expiration time=" + env.getProperty("token.expiration_time"));
     }
 }

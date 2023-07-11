@@ -22,8 +22,10 @@ public class WebSecurity  {
     private Environment env;
     private final ObjectPostProcessor<Object> objectPostProcessor;
     private static final String[] AUTH_WHITELIST = {
+            "/actuator/**",
             "/hello",
             "/health-check",
+            "/dd",
             "/join",
             "/login"
             };
@@ -31,6 +33,7 @@ public class WebSecurity  {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.csrf(request -> request.disable());
         http.headers(request -> request.frameOptions(frameOptionsConfig -> request.disable()));
+//        http.authorizeHttpRequests(request -> request.requestMatchers("/**").permitAll());
         http.authorizeHttpRequests(request -> request.requestMatchers(AUTH_WHITELIST).permitAll()).addFilter(getAuthenticationFilter());
         http.authorizeHttpRequests(request -> request.requestMatchers(PathRequest.toH2Console()).permitAll()).addFilter(getAuthenticationFilter());
 

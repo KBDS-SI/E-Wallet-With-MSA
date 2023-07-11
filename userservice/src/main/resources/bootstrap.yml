@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      uri: http://192.168.61.252:8888
+      name: ewalletconfig # yml 파일명 앞부분 (ewalletconfig_hs.yml)
+  profiles:
+    active: hs # yml 파일명 뒷부분 (ewalletconfig_hs.yml)

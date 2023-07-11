@@ -29,14 +29,14 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
             ServerHttpRequest request = exchange.getRequest();
 
             if(!request.getHeaders().containsKey(HttpHeaders.AUTHORIZATION)){
-                return onError(exchange, "헤더가 없는데용?", HttpStatus.UNAUTHORIZED);
+                return onError(exchange, "헤더에 토큰을 넣어야해요~~", HttpStatus.UNAUTHORIZED);
             }
 
             String authorizationHeader = request.getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
             String jwt = authorizationHeader.replace("Bearer", "");
 
             if(!isJwtValid(jwt)){
-                return onError(exchange, "JWT 토큰이 유효하지 않슴다", HttpStatus.UNAUTHORIZED);
+                return onError(exchange, "JWT 토큰이 유효하지 않아요~~", HttpStatus.UNAUTHORIZED);
             }
 
             return chain.filter(exchange);
@@ -46,6 +46,7 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
     private boolean isJwtValid(String jwt) {
         boolean returnValue = true;
         String subject = null;
+        System.out.println("=========" + env.getProperty("token.secret"));
         try {
             subject = Jwts.parser().setSigningKey(env.getProperty("token.secret"))
                     .parseClaimsJws(jwt).getBody()
