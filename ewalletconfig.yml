@@ -1,7 +1,11 @@
 token:
   expiration_time: 100000 #300000 # 5분
-  secret: user_token
+  secret: user_token_native
 
 gateway:
   ip: 192.168.61.252
 
+ip:
+  eureka: http://192.168.61.252:8761/eureka
+  hostname: 192.168.61.252
+  gateway: 192.168.61.252

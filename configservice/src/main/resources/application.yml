@@ -4,8 +4,13 @@ server:
 spring:
   application:
     name: configservice
+  profiles:
+    active: native
+#    active: git
   cloud:
     config:
       server:
+        native:
+          search-locations: ../../../../
         git:
           uri: https://github.com/KBDS-TD/E-Wallet-Config.git

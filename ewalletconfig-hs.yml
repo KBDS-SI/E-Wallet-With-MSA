@@ -1,6 +1,6 @@
 token:
   expiration_time: 950108 #300000 # 5분
-  secret: user_token_hsss
+  secret: user_token_native-hs
 
 gateway:
   ip: 192.168.61.252
