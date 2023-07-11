@@ -132,8 +132,6 @@ spring:
             #  - AddRequestHeader=second-request, second-request-header2
             #  - AddResponseHeader=second-response, second-response-header2
             - CustomFilter
-#token:
-#  secret: user_token
 
 management:
   endpoints:

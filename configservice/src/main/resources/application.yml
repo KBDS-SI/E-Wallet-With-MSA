@@ -8,4 +8,4 @@ spring:
     config:
       server:
         git:
-          uri: C:\Users\KBDS\Study\E-Local-Config
+          uri: https://github.com/KBDS-TD/E-Wallet-Config.git
