@@ -40,10 +40,11 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request,
                                                 HttpServletResponse response) throws AuthenticationException {
-        log.info("================== 들어오나 ??");
+        log.info("================== attemptAuthentication 호출");
         try {
             RequestLogin creds = new ObjectMapper().readValue(request.getInputStream(), RequestLogin.class);
-            log.info("request : "+request.toString());
+            log.info("========================== creds : "+creds.getUserId() + "  "+ creds.getPwd());
+            log.info("========================== request : "+request.toString());
 
             return getAuthenticationManager().authenticate(
                     new UsernamePasswordAuthenticationToken(
@@ -62,10 +63,11 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                                             HttpServletResponse response,
                                             FilterChain chain,
                                             Authentication authResult) throws IOException, ServletException {
-
-        log.info( ((User)authResult.getPrincipal()).getUsername() );
+        log.info("================== successfulAuthentication 호출");
         String userId = ((User)authResult.getPrincipal()).getUsername();
+        log.info("========================== userId : " + userId);
         UserDto userDetails = userService.getUserDetailsByUserId(userId);
+        log.info("========================== userDetails : "+userDetails.toString());
         String token = Jwts.builder()
                 .setSubject(userDetails.getUserId())
                 .setExpiration(new Date(System.currentTimeMillis() +
@@ -73,7 +75,9 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                 .signWith(SignatureAlgorithm.HS512, env.getProperty("token.secret"))
                 .compact();
 
+        log.info("========================== token : "+ token);
         response.addHeader("token", token);
         response.addHeader("userId", userDetails.getUserId());
+        log.info("========================== response : "+response.toString()+" , "+response.getHeader(token) +" , "+ response.getHeader(userId));
     }
 }

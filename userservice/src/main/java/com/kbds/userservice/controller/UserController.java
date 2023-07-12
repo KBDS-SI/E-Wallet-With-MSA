@@ -4,7 +4,6 @@ import com.kbds.userservice.dto.UserDto;
 import com.kbds.userservice.service.UserService;
 import com.kbds.userservice.vo.RequestUser;
 import com.kbds.userservice.vo.ResponseUser;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -13,13 +12,6 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 
 @RestController
 @RequestMapping("/")
@@ -36,11 +28,12 @@ public class UserController {
 
     @PostMapping("/join")
     public ResponseEntity<ResponseUser> join(@RequestBody RequestUser requestUser) {
+        log.info("================== join 호출");
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         UserDto userDto = mapper.map(requestUser, UserDto.class);
         UserDto user = userService.createUser(userDto);
-        log.info("=============="+userDto);
+        log.info("========================== userDto : "+userDto);
 
         ResponseUser responseUser = mapper.map(userDto, ResponseUser.class);
         return ResponseEntity.status(HttpStatus.CREATED).body(responseUser);
@@ -48,6 +41,7 @@ public class UserController {
 
     @PostMapping("/userLogin")
     public ResponseEntity<ResponseUser> userLogin(@RequestBody RequestUser requestUser) {
+        log.info("================== userLogin 호출");
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         UserDto userDto = mapper.map(requestUser, UserDto.class);

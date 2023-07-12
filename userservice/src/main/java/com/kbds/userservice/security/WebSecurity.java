@@ -1,6 +1,7 @@
 package com.kbds.userservice.security;
 
 import com.kbds.userservice.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@Slf4j
 public class WebSecurity  {
     private UserService userService;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -31,12 +33,15 @@ public class WebSecurity  {
             };
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+        log.info("================== filterChain 호출");
         http.csrf(request -> request.disable());
+        http.cors(cors -> cors.disable());
         http.headers(request -> request.frameOptions(frameOptionsConfig -> request.disable()));
 //        http.authorizeHttpRequests(request -> request.requestMatchers("/**").permitAll());
         http.authorizeHttpRequests(request -> request.requestMatchers(AUTH_WHITELIST).permitAll()).addFilter(getAuthenticationFilter());
         http.authorizeHttpRequests(request -> request.requestMatchers(PathRequest.toH2Console()).permitAll()).addFilter(getAuthenticationFilter());
 
+        log.info("================== filterChain 종료");
         return http.build();
     }
 //
@@ -58,5 +63,4 @@ public class WebSecurity  {
         authenticationFilter.setAuthenticationManager(authenticationManager(builder));
         return authenticationFilter;
     }
-
 }

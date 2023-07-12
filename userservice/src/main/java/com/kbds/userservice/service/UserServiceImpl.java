@@ -5,7 +5,6 @@ import com.kbds.userservice.dto.UserDto;
 import com.kbds.userservice.jpa.UserEntity;
 import com.kbds.userservice.jpa.UserRepository;
 import com.kbds.userservice.vo.RequestEwallet;
-import com.kbds.userservice.vo.ResponseEwallet;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -36,6 +35,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserDto createUser(UserDto userDto) {
+        log.info("================== createUser 호출");
 //        userDto.setUserId(UUID.randomUUID().toString());
         ModelMapper mapper = new ModelMapper();
         UserEntity userEntity = mapper.map(userDto, UserEntity.class);
@@ -53,6 +53,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserDto userLogin(UserDto userDto) {
+        log.info("================== UserServiceImpl > userLogin 호출");
         ModelMapper mapper = new ModelMapper();
         UserEntity userEntity = mapper.map(userDto, UserEntity.class);
         userEntity.setEncryptedPwd(passwordEncoder.encode(userDto.getPwd()));
@@ -64,6 +65,8 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserDto getUserDetailsByUserId(String userId) {
+        log.info("================== getUserDetailsByUserId 호출");
+        
         UserEntity userEntity = userRepository.findByUserId(userId);
         if (userEntity == null)
             throw new UsernameNotFoundException(userId);
@@ -83,10 +86,12 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
+        log.info("================== loadUserByUsername 호출");
         UserEntity userEntity = userRepository.findByUserId(userId);
 
-        if (userEntity == null)
+        if (userEntity == null) {
             throw new UsernameNotFoundException(userId + ": not found");
+        }
 
         return new User(userEntity.getUserId(), userEntity.getEncryptedPwd(),
                 true, true, true, true,
