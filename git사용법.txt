@@ -54,3 +54,8 @@ git commit -m "변경내용(comment)" - add를 한 파일(스테이징영역에 
 remote repository에 저장
 git push origin [branch명]          - commit된 것을 해당 브랜치의 repository로 반영한다.
 
+
+
+pull request
+fork로 새로운 url 및 repository를 생성하여 여기서 작업 후 반영할 때, 해당 main 소유자의 검토를 받은 후 머지를 수행할 수가 있다.
+이렇게 수행하게 되면, 검토자의 확인이 들어가기 때문에 훨씬 안전하게 머지 작업을 수행할 수 있을 것이다.
