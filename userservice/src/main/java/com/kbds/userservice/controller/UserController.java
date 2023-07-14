@@ -2,6 +2,7 @@ package com.kbds.userservice.controller;
 
 import com.kbds.userservice.dto.UserDto;
 import com.kbds.userservice.service.UserService;
+import com.kbds.userservice.vo.RequestLogin;
 import com.kbds.userservice.vo.RequestUser;
 import com.kbds.userservice.vo.ResponseUser;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +21,7 @@ public class UserController {
     private UserService userService;
     private Environment env;
 
+
     @Autowired
     public UserController(UserService userService, Environment env) {
         this.userService = userService;
@@ -33,18 +35,19 @@ public class UserController {
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         UserDto userDto = mapper.map(requestUser, UserDto.class);
         UserDto user = userService.createUser(userDto);
-        log.info("========================== userDto : "+userDto);
+        log.info("================== userDto : "+userDto);
 
         ResponseUser responseUser = mapper.map(userDto, ResponseUser.class);
         return ResponseEntity.status(HttpStatus.CREATED).body(responseUser);
     }
 
     @PostMapping("/userLogin")
-    public ResponseEntity<ResponseUser> userLogin(@RequestBody RequestUser requestUser) {
+    public ResponseEntity<ResponseUser> userLogin(@RequestBody RequestLogin requestLogin) {
+//        UserDetails userDetails = userService.loadUserByUsername(requestUser);
         log.info("================== userLogin 호출");
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-        UserDto userDto = mapper.map(requestUser, UserDto.class);
+        UserDto userDto = mapper.map(requestLogin, UserDto.class);
         userDto = userService.userLogin(userDto);
 
         ResponseUser responseUser = mapper.map(userDto, ResponseUser.class);

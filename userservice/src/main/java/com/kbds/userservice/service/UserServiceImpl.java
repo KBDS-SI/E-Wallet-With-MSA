@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserDto createUser(UserDto userDto) {
-        log.info("================== createUser 호출");
+        log.info("====================== createUser 호출");
 //        userDto.setUserId(UUID.randomUUID().toString());
         ModelMapper mapper = new ModelMapper();
         UserEntity userEntity = mapper.map(userDto, UserEntity.class);
@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserDto userLogin(UserDto userDto) {
-        log.info("================== UserServiceImpl > userLogin 호출");
+        log.info("====================== userLogin 호출");
         ModelMapper mapper = new ModelMapper();
         UserEntity userEntity = mapper.map(userDto, UserEntity.class);
         userEntity.setEncryptedPwd(passwordEncoder.encode(userDto.getPwd()));
@@ -65,7 +65,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserDto getUserDetailsByUserId(String userId) {
-        log.info("================== getUserDetailsByUserId 호출");
+        log.info("====================== getUserDetailsByUserId 호출");
         
         UserEntity userEntity = userRepository.findByUserId(userId);
         if (userEntity == null)
@@ -86,8 +86,10 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
-        log.info("================== loadUserByUsername 호출");
+        log.info("====================== loadUserByUsername 호출");
+        log.info("====================== userId : "+userId);
         UserEntity userEntity = userRepository.findByUserId(userId);
+        log.info("====================== userEntity : "+userEntity.toString());
 
         if (userEntity == null) {
             throw new UsernameNotFoundException(userId + ": not found");

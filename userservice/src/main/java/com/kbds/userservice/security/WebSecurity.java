@@ -27,10 +27,11 @@ public class WebSecurity  {
             "/actuator/**",
             "/hello",
             "/health-check",
-            "/dd",
             "/join",
-            "/login"
-            };
+//            "/login",
+//            "/userLogin",
+            "/dd"
+    };
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         log.info("================== filterChain 호출");
@@ -41,7 +42,6 @@ public class WebSecurity  {
         http.authorizeHttpRequests(request -> request.requestMatchers(AUTH_WHITELIST).permitAll()).addFilter(getAuthenticationFilter());
         http.authorizeHttpRequests(request -> request.requestMatchers(PathRequest.toH2Console()).permitAll()).addFilter(getAuthenticationFilter());
 
-        log.info("================== filterChain 종료");
         return http.build();
     }
 //
@@ -52,15 +52,17 @@ public class WebSecurity  {
         this.env = env;
         this.objectPostProcessor = objectPostProcessor;
     }
-    public AuthenticationManager authenticationManager(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
-        return auth.build();
-    }
 
     private AuthenticationFilter getAuthenticationFilter() throws Exception {
+        log.info("========================== getAuthenticationFilter 호출");
         AuthenticationFilter authenticationFilter = new AuthenticationFilter(userService, env);
         AuthenticationManagerBuilder builder = new AuthenticationManagerBuilder(objectPostProcessor);
         authenticationFilter.setAuthenticationManager(authenticationManager(builder));
         return authenticationFilter;
+    }
+
+    public AuthenticationManager authenticationManager(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
+        return auth.build();
     }
 }
